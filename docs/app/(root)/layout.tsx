@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Activity, Suspense } from "react";
-import { Header } from "@/docs-components/components/header/header";
-import { Footer } from "@/components/layout/footer";
+import { Suspense } from "react";
 
 // import { usePathname } from "next/navigation";
 

@@ -13,7 +13,7 @@ export interface Announcement {
 
 export const announcements: Announcement[] = [
   {
-    id: "2024-12-01",
+    id: "2026-02-07",
     title: "New Components Added! 🎉",
     description:
       "We've added some exciting new components to enhance your React Native development experience.",
@@ -26,8 +26,12 @@ export const announcements: Announcement[] = [
         name: "Mesh Gradient",
         path: "/docs/components/mesh-gradient",
       },
+      {
+        name: "Aurora",
+        path: "/docs/components/aurora",
+      },
     ],
-    date: "December 1, 2024",
+    date: "Feburary 7, 2026",
     version: "v2.4.0",
   },
 ];

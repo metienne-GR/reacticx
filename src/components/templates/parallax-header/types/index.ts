@@ -7,7 +7,8 @@ import type {
   TextStyle,
   ViewStyle,
 } from "react-native";
-import { Animated, ImageSourcePropType } from "react-native";
+import { Animated, type ImageSourcePropType } from "react-native";
+import type { JSX } from "react";
 
 type AnimatedViewProps = {
   renderHeaderNavBarComponent?: () => JSX.Element;

@@ -21,11 +21,24 @@ import { ExampleComponentSource } from "@/docs-components/components/example-usa
 import { AutoTypeTable } from "@/docs-components/components/AutoTypeTable";
 import { source } from "@/lib/source";
 import { CopyMarkdownButton } from "@/components/ui/copy-markdown-button";
+import {
+  AnchorProvider,
+  ScrollProvider,
+  TOCItem,
+  type TOCItemType,
+} from "fumadocs-core/toc";
+
+import * as TabsComponents from "fumadocs-ui/components/tabs";
+import type { MDXComponents } from "mdx/types";
+// import { useRef } from "react";
+// Force static generation for Cloudflare Pages compatibility
+// This ensures pages are fully static and Node.js APIs are only used at build time
+export const dynamic = "force-static";
+export const dynamicParams = false;
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
-
+  const page = source.getPage(params.slug) as any;
   const lastModifiedTime = page?.data.lastModified;
 
   console.log(lastModifiedTime, "page");
@@ -36,7 +49,15 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const MDX = page.data.body;
 
   return (
-    <DocsPage footer={{ enabled: false }}>
+    <DocsPage
+      footer={{ enabled: false }}
+      tableOfContent={{
+        enabled: true,
+        style: "clerk",
+        single: true,
+      }}
+      toc={page.data.toc as TOCItemType[]}
+    >
       <DocsTitle className="ml-8 font-semibold text-4xl tracking-tighter mb-0">
         {page.data.title}
       </DocsTitle>
@@ -63,9 +84,10 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
             Preview,
             PreviewClient,
             PreviewComment,
+            ...TabsComponents,
             PreviewTemplate,
             ComponentSource,
-            img: (props) => <ImageZoom {...(props as any)} />,
+            img: (props: any) => <ImageZoom {...(props as any)} />,
             ExampleComponentSource,
             AutoTypeTable,
             Steps,
@@ -74,6 +96,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         />
       </DocsBody>
     </DocsPage>
+    // </AnchorProvider>
   );
 }
 

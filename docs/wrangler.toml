@@ -1,0 +1,17 @@
+name = "kokonut-ui-docs"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+# Increase limits for large documentation sites
+[limits]
+cpu_ms = 50
+
+# KV namespace bindings (if needed for caching)
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "your-kv-namespace-id"
+
+# Environment variables (add as needed)
+# [env.production.vars]
+# API_URL = "https://api.example.com"

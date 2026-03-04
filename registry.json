@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 106,
+  "totalComponents": 122,
   "categories": [
     "ai",
     "atoms",
@@ -51,6 +51,15 @@
         "AnimatedChip.tsx",
         "Chip.tsx",
         "Chip.types.ts"
+      ]
+    },
+    "animated-curve-text": {
+      "name": "animated-curve-text",
+      "category": "molecules",
+      "path": "src/components/molecules/animated-curve-text",
+      "folders": [],
+      "files": [
+        "index.tsx"
       ]
     },
     "animated-header-scrollview": {
@@ -113,6 +122,46 @@
       "folders": [],
       "files": [
         "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "apple-intelligence": {
+      "name": "apple-intelligence",
+      "category": "organisms",
+      "path": "src/components/organisms/apple-intelligence",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "context.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts",
+        "use-siri-uniforms.ts"
+      ]
+    },
+    "aura-lift": {
+      "name": "aura-lift",
+      "category": "organisms",
+      "path": "src/components/organisms/aura-lift",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "context.tsx",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "aurora": {
+      "name": "aurora",
+      "category": "molecules",
+      "path": "src/components/molecules/aurora",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "helper.ts",
         "index.tsx",
         "types.ts"
       ]
@@ -194,10 +243,10 @@
         "types.ts"
       ]
     },
-    "breadcrumbs": {
-      "name": "breadcrumbs",
+    "Breadcrumbs": {
+      "name": "Breadcrumbs",
       "category": "molecules",
-      "path": "src/components/molecules/breadcrumbs",
+      "path": "src/components/molecules/Breadcrumbs",
       "folders": [
         {
           "name": "children",
@@ -268,6 +317,16 @@
         "types.ts"
       ]
     },
+    "circle-loader": {
+      "name": "circle-loader",
+      "category": "molecules",
+      "path": "src/components/molecules/circle-loader",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "circular-carousel": {
       "name": "circular-carousel",
       "category": "molecules",
@@ -282,6 +341,16 @@
       "name": "circular-list",
       "category": "molecules",
       "path": "src/components/molecules/circular-list",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "circular-loader": {
+      "name": "circular-loader",
+      "category": "molecules",
+      "path": "src/components/molecules/circular-loader",
       "folders": [],
       "files": [
         "index.tsx",
@@ -326,6 +395,16 @@
       "folders": [],
       "files": [
         "helper.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "curved-marquee": {
+      "name": "curved-marquee",
+      "category": "organisms",
+      "path": "src/components/organisms/curved-marquee",
+      "folders": [],
+      "files": [
         "index.tsx",
         "types.ts"
       ]
@@ -624,50 +703,6 @@
         "List.types.ts"
       ]
     },
-    "Loaders": {
-      "name": "Loaders",
-      "category": "molecules",
-      "path": "src/components/molecules/Loaders",
-      "folders": [
-        {
-          "name": "circle",
-          "files": [
-            "Circle.Indiactor.tsx",
-            "Circle.types.ts"
-          ]
-        },
-        {
-          "name": "circular",
-          "files": [
-            "index.tsx",
-            "types.ts"
-          ]
-        },
-        {
-          "name": "dots",
-          "files": [
-            "OrbitingDots.Indicator.tsx",
-            "OrbitingDots.types.ts",
-            "PlusingDots.Indicator.tsx",
-            "PlusingDots.types.ts"
-          ]
-        },
-        {
-          "name": "rotate",
-          "files": [
-            "SpinnerArc.Indicator.tsx",
-            "SpinnerArc.types.ts"
-          ]
-        },
-        {
-          "name": "square",
-          "files": [
-            "rotate/RotateSquare.Indicator.tsx"
-          ]
-        }
-      ],
-      "files": []
-    },
     "marquee": {
       "name": "marquee",
       "category": "base",
@@ -736,7 +771,8 @@
         "conf.ts",
         "const.ts",
         "index.tsx",
-        "types.ts"
+        "types.ts",
+        "useFrameTime.ts"
       ]
     },
     "morphing-tabbar": {
@@ -746,6 +782,16 @@
       "folders": [],
       "files": [
         "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "orbiting-dots": {
+      "name": "orbiting-dots",
+      "category": "molecules",
+      "path": "src/components/molecules/orbiting-dots",
+      "folders": [],
+      "files": [
         "index.tsx",
         "types.ts"
       ]
@@ -847,6 +893,26 @@
         "types.ts"
       ]
     },
+    "progress": {
+      "name": "progress",
+      "category": "organisms",
+      "path": "src/components/organisms/progress",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "pulsing-dots": {
+      "name": "pulsing-dots",
+      "category": "molecules",
+      "path": "src/components/molecules/pulsing-dots",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "qr-code": {
       "name": "qr-code",
       "category": "base",
@@ -865,6 +931,18 @@
       "folders": [],
       "files": [
         "config.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "radiant-button": {
+      "name": "radiant-button",
+      "category": "base",
+      "path": "src/components/base/radiant-button",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "helpers.ts",
         "index.tsx",
         "types.ts"
       ]
@@ -895,6 +973,16 @@
       "name": "rotate-carousel",
       "category": "molecules",
       "path": "src/components/molecules/rotate-carousel",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "rotating-square": {
+      "name": "rotating-square",
+      "category": "molecules",
+      "path": "src/components/molecules/rotating-square",
       "folders": [],
       "files": [
         "index.tsx",
@@ -972,6 +1060,18 @@
         "types.ts"
       ]
     },
+    "settings-v1": {
+      "name": "settings-v1",
+      "category": "templates",
+      "path": "src/components/templates/settings-v1",
+      "folders": [],
+      "files": [
+        "components.tsx",
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "Shimmer": {
       "name": "Shimmer",
       "category": "molecules",
@@ -990,6 +1090,29 @@
       "folders": [],
       "files": [
         "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "sign-up-v1": {
+      "name": "sign-up-v1",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v1",
+      "folders": [],
+      "files": [
+        "background-gradient.tsx",
+        "icons.tsx",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "sign-up-v2": {
+      "name": "sign-up-v2",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v2",
+      "folders": [],
+      "files": [
+        "background-grid.tsx",
         "index.tsx",
         "types.ts"
       ]
@@ -1017,6 +1140,16 @@
         "types.ts"
       ]
     },
+    "spinner-arc": {
+      "name": "spinner-arc",
+      "category": "molecules",
+      "path": "src/components/molecules/spinner-arc",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "split-view": {
       "name": "split-view",
       "category": "molecules",
@@ -1024,6 +1157,17 @@
       "folders": [],
       "files": [
         "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "squiggly-slider": {
+      "name": "squiggly-slider",
+      "category": "molecules",
+      "path": "src/components/molecules/squiggly-slider",
+      "folders": [],
+      "files": [
+        "const.ts",
         "index.tsx",
         "types.ts"
       ]
@@ -1064,6 +1208,20 @@
       "path": "src/components/micro-interactions/stacked-chips",
       "folders": [],
       "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "staggered-text": {
+      "name": "staggered-text",
+      "category": "organisms",
+      "path": "src/components/organisms/staggered-text",
+      "folders": [],
+      "files": [
+        "base.ts",
+        "const.ts",
+        "helper.ts",
+        "hooks.ts",
         "index.tsx",
         "types.ts"
       ]
@@ -1177,16 +1335,6 @@
       "files": [
         "conf.ts",
         "helper.ts",
-        "index.tsx",
-        "types.ts"
-      ]
-    },
-    "unstable_curved-text-marquee": {
-      "name": "unstable_curved-text-marquee",
-      "category": "organisms",
-      "path": "src/components/organisms/unstable_curved-text-marquee",
-      "folders": [],
-      "files": [
         "index.tsx",
         "types.ts"
       ]

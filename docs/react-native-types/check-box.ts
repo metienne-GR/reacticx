@@ -10,6 +10,7 @@ interface ICheckbox {
   checkmarkColor: string;
   readonly checked?: boolean;
   readonly stroke?: number;
+  readonly showBorder?: boolean;
   readonly size?: number;
 }
 

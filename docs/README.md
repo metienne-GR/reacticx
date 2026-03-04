@@ -1,32 +1,56 @@
-<p align="center">
-  <a href="https://kokonutui.com" target="_blank">
-  <img alt="KokonutUI" src="https://raw.githubusercontent.com/kokonut-labs/kokonutui/refs/heads/main/public/logo.svg" width="350" height="120" style="max-width: 100%;">
+<div align="center">
+  <img src="https://i.postimg.cc/5y1vMLJs/reacticx-trademark-without-trademark.png" alt="Reacticx Poster" width="800" />
+</div>
+
+<h1 align="center">
+  <a href="https://github.com/rit3zh/reacticx" target="_blank" rel="noopener noreferrer">
+    💅
   </a>
-</p>
-
-<h1 align="center">Kokonut UI</h1>
-<p align="center">Open-source collection of stunning Components built with Tailwind CSS, shadcn/ui and Motion to use on your websites</p>
+</h1>
 
 <p align="center">
+  <!-- <strong>Glow UI</strong><br> -->
+  Beautiful React Native components. One command away.</p>
 
+<div align="center">
+  <p>
+    <img src="https://img.shields.io/npm/v/reacticx.svg?style=flat-square" alt="Version" />
+    <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License" />
+    <img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="Build Status" />
+    <img src="https://img.shields.io/badge/PRs-welcome-purple.svg" alt="PRs Welcome" />
+  </p>
+
+<p align="center">
+  <img src="http://forthebadge.com/images/badges/built-with-love.svg" alt="Built with love" width="120px" />
 </p>
+</div>
 
-## Getting Started
+## 📚 Documentation
 
-Visit [https://kokonutui.com/docs](https://kokonutui.com/docs) for the documentation.
+Visit our [documentation](https://www.reacticx.com/docs) to learn more about our components and how to use them.
 
-## Contributing
+## 🤝 Contributing
 
-Feel free to create any pull requests or issues.
+We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING.md) to get started.
 
-## Sponsor
+## 💬 Community
 
-Thank to @Vercel for sponsoring this project as part of the OSS 2025 Program.
+Join our [Discord community](https://discord.gg/wCpFkYpyHA) to suggest components, share feedback, get help, and connect with other developers. Every idea and contribution helps make Reacticx much more better!
 
-<a href="https://vercel.com/oss">
-  <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge.svg" />
-</a>
+<div>
+  <a href="https://discord.gg/wCpFkYpyHA" target="_blank">
+    <img src="https://dcbadge.limes.pink/api/server/wCpFkYpyHA?style=flat" alt="Join Discord" />
+  </a>  
+</div>
 
-## License
+<br>
 
-This project is licensed under the MIT License.
+## 📝 License
+
+MIT © [rit3zh](https://github.com/rit3zh)
+
+---
+
+<p align="center">
+  Made with ❤️ for the React Native community
+</p>

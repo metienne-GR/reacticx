@@ -1,9 +1,7 @@
-import React from "react";
+import * as React from "react";
 import { StyleSheet, View } from "react-native";
 
-export default function App(): React.ReactNode &
-  React.JSX.Element &
-  React.ReactElement {
+export default function App() {
   return <View style={stylez.container}></View>;
 }
 

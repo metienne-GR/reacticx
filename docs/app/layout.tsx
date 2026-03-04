@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
@@ -9,6 +7,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { META_THEME_COLORS, siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/docs-components/components/tooltip";
+import Script from "next/script";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -86,6 +85,13 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT_ID}`}
+            crossOrigin="anonymous"
+          />
+        </head>
         <body className={cn(geist.variable, geist.className, "antialiased")}>
           <RootProvider>
             <ThemeProvider
@@ -97,8 +103,6 @@ export default function RootLayout({
               <TooltipProvider>{children}</TooltipProvider>
             </ThemeProvider>
           </RootProvider>
-          <Analytics />
-          <SpeedInsights />
         </body>
       </html>
     </ViewTransitions>

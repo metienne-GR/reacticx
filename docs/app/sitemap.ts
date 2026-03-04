@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { source } from "@/lib/source";
 
+// Not using edge runtime - sitemap is statically generated
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date();
   const baseUrl = "https://reacticx.com";

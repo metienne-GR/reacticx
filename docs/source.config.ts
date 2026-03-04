@@ -15,7 +15,18 @@ export const docs = defineDocs({
         .transform((val) => (val ? new Date(val) : undefined))
         .optional(),
     }),
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
   },
 });
 
-export default defineConfig();
+export default defineConfig({
+  mdxOptions: {
+    remarkNpmOptions: {
+      persist: {
+        id: "package-manager",
+      },
+    },
+  },
+});

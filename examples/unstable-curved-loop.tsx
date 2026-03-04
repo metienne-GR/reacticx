@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { SymbolView } from "expo-symbols";
 import { UnstableAurora } from "@/components/organisms/unstable_aurora";
 import { useFonts } from "expo-font";
-import UnStableCurvedLoopMarquee from "@/components/organisms/unstable_curved-text-marquee";
+import UnStableCurvedLoopMarquee from "@/components/organisms/curved-marquee";
 import { PulsingDots } from "@/components";
 
 export default function HomeScreen() {

@@ -18,24 +18,32 @@ import {
 import type { ICheckbox, IStrokePath } from "./types";
 import { BOX_PATH, PADDING, TICK_PATH, VIEWPORT_SIZE } from "./conf";
 
-const AnimatedSvgPath = Animated.createAnimatedComponent<PathProps>(Path);
-const AnimatedG = Animated.createAnimatedComponent<GProps>(G);
+const AnimatedSvgPath = Animated.createAnimatedComponent(Path);
+const AnimatedG = Animated.createAnimatedComponent(G);
 
 const StrokePath: React.FC<IStrokePath> = ({
   animValue,
   ...pathProps
 }: IStrokePath): React.ReactNode & React.JSX.Element => {
-  const [pathLength, setPathLength] = useState<number>(0);
-  const pathRef = useRef<typeof AnimatedSvgPath>(null);
+  const [pathLength, setPathLength] = useState(0);
+  const pathRef = useRef(null);
 
   const animatedStrokeProps = useAnimatedProps<
-    Pick<PathProps, "strokeDashoffset">
+    Pick<PathProps, "strokeDashoffset" | "opacity">
   >(() => {
+    if (pathLength === 0) {
+      return {
+        strokeDashoffset: 1,
+        opacity: 0,
+      };
+    }
+
     const easedProgress = Easing.bezierFn(0.37, 0, 0.63, 1)(animValue.value);
     const offset = pathLength - pathLength * easedProgress;
 
     return {
       strokeDashoffset: Math.max(0, offset),
+      opacity: 1,
     };
   });
 
@@ -49,24 +57,38 @@ const StrokePath: React.FC<IStrokePath> = ({
 
   return (
     <AnimatedSvgPath
-      animatedProps={animatedStrokeProps}
-      fill="none"
-      onLayout={handleLayout}
-      // @ts-ignore
       ref={pathRef}
+      onLayout={handleLayout}
       strokeDasharray={pathLength}
+      animatedProps={animatedStrokeProps}
       {...pathProps}
     />
   );
 };
 
-export const Checkbox: React.FC<ICheckbox> = memo<ICheckbox>(
-  ({ checked = false, checkmarkColor, stroke = 1.5, size }: ICheckbox) => {
-    const animValue = useSharedValue<number>(0);
-    const scaleValue = useSharedValue<number>(1);
+export const Checkbox: React.FC<ICheckbox> = memo(
+  ({
+    checked = false,
+    checkmarkColor,
+    stroke = 1.5,
+    size,
+    showBorder = false,
+  }: ICheckbox) => {
+    const animValue = useSharedValue(checked ? 1 : 0);
+    const borderAnimValue = useSharedValue(showBorder ? 1 : 0);
+    const scaleValue = useSharedValue(1);
+    const isFirstRender = useRef(true);
 
     useEffect(() => {
-      animValue.value = withTiming<number>(checked ? 1 : 0, {
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
+        animValue.value = checked ? 1 : 0;
+        borderAnimValue.value = showBorder ? 1 : 0;
+        scaleValue.value = 1;
+        return;
+      }
+
+      animValue.value = withTiming(checked ? 1 : 0, {
         duration: checked ? 300 : 250,
         easing: checked
           ? Easing.bezier(0.4, 0, 0.2, 1)
@@ -74,19 +96,31 @@ export const Checkbox: React.FC<ICheckbox> = memo<ICheckbox>(
       });
 
       if (checked) {
-        scaleValue.value = withSpring<number>(1, {
+        scaleValue.value = withSpring(1, {
           damping: 10,
           stiffness: 150,
           mass: 0.5,
         });
       } else {
-        scaleValue.value = withTiming<number>(1, { duration: 100 });
+        scaleValue.value = withTiming(1, { duration: 100 });
       }
     }, [checked, animValue, scaleValue]);
+
+    useEffect(() => {
+      if (isFirstRender.current) return;
+
+      borderAnimValue.value = withTiming(showBorder ? 1 : 0, {
+        duration: 250,
+        easing: showBorder
+          ? Easing.bezier(0.4, 0, 0.2, 1)
+          : Easing.bezier(0.4, 0, 0.6, 1),
+      });
+    }, [showBorder, borderAnimValue]);
 
     const animatedCheckmarkProps = useAnimatedProps<Pick<GProps, "transform">>(
       () => {
         const scale = interpolate(scaleValue.value, [0, 1], [0.8, 1]);
+
         return {
           transform: [
             { translateX: 32 },
@@ -107,43 +141,30 @@ export const Checkbox: React.FC<ICheckbox> = memo<ICheckbox>(
     ].join(" ");
 
     return (
-      <Svg
-        viewBox={viewBox}
-        style={{
-          transform: [
-            {
-              scale: size ? size / VIEWPORT_SIZE : 1,
-            },
-          ],
-        }}
-      >
-        {/* <Defs>
-          <ClipPath id="clipPath">
-            <Path
-              d={BOX_PATH}
-              fill="white"
-              stroke="gray"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </ClipPath>
-        </Defs> */}
-
-        <G clipPath="url(#clipPath)">
-          <AnimatedG animatedProps={animatedCheckmarkProps}>
-            <StrokePath
-              animValue={animValue}
-              d={TICK_PATH}
-              stroke={checkmarkColor}
-              strokeWidth={stroke}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </AnimatedG>
-        </G>
+      <Svg width={size} height={size} viewBox={viewBox}>
+        <StrokePath
+          d={BOX_PATH}
+          stroke={checkmarkColor}
+          strokeWidth={stroke}
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          animValue={borderAnimValue}
+        />
+        <AnimatedG animatedProps={animatedCheckmarkProps}>
+          <StrokePath
+            d={TICK_PATH}
+            stroke={checkmarkColor}
+            strokeWidth={stroke}
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            animValue={animValue}
+          />
+        </AnimatedG>
       </Svg>
     );
   },
 );
 
-export default memo<React.FunctionComponent<ICheckbox>>(Checkbox);
+export default memo<React.FC<ICheckbox>>(Checkbox);
