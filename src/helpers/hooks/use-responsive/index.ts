@@ -15,8 +15,15 @@ const useResponsive = (): IResponsiveInfo => {
   const isPortrait = !isLandscape;
 
   const breakpoint: TBreakpoint =
-    width < 480 ? "compact" : width < 830 ? "medium" : "expanded";
+    width < 390
+      ? "nano"
+      : width < 480
+        ? "compact"
+        : width < 830
+          ? "medium"
+          : "expanded";
 
+  const isNano = breakpoint === "nano";
   const isCompact = breakpoint === "compact";
   const isMedium = breakpoint === "medium";
   const isExpanded = breakpoint === "expanded";
@@ -31,14 +38,13 @@ const useResponsive = (): IResponsiveInfo => {
   );
 
   const rv = useCallback(
-    <T>(values: { compact: T; medium?: T; expanded?: T }): T => {
+    <T>(values: { nano?: T; compact: T; medium?: T; expanded?: T }): T => {
       if (isExpanded && values.expanded !== undefined) return values.expanded;
-
       if (isMedium && values.medium !== undefined) return values.medium;
-
+      if (isNano && values.nano !== undefined) return values.nano;
       return values.compact;
     },
-    [isExpanded, isMedium],
+    [isExpanded, isMedium, isNano],
   );
 
   return useMemo(

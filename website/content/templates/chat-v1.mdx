@@ -1,0 +1,93 @@
+---
+title: Chat V1
+description: A full-featured AI chat interface with animated text streaming, custom message bubbles, and an expanding input bar. Inspired by ChatGPT-style interactions.
+preview: /static/media/chat-v1.png
+tags:
+  - react-native-chat
+  - ai-chat
+  - streaming-text
+  - gifted-chat
+category: Communication
+---
+
+## Features
+
+- AI-style animated text streaming with character-by-character fade-in (18ms delay, 250ms duration)
+- Custom dark message bubbles with sender/receiver styling
+- Expanding multiline input bar (up to 5 lines)
+- Voice button that transforms into a send arrow when text is entered
+- Empty state with greeting message and quick-action feature chips (Surprise me, Transform image, Learn maths, Learn coding)
+- Secondary action icons (+, globe, bullhorn) alongside the input
+- Dynamic layout animations for smooth message transitions
+- iOS SF Symbol support with Android fallback
+- Dark theme optimized UI
+
+## Installation
+
+<Steps>
+<Step>
+
+### Install the template
+
+```package-install
+npx reacticx add chat-v1
+```
+
+</Step>
+
+<Step>
+
+### Install dependencies
+
+```package-install
+react-native-gifted-chat react-native-reanimated expo-font expo-symbols expo-vector-icons
+```
+
+</Step>
+
+<Step>
+
+### Import and use
+
+```tsx
+import ChatV1 from "./components/templates/chat-v1";
+
+export default function App() {
+  return <ChatV1 />;
+}
+```
+
+</Step>
+</Steps>
+
+## Project Structure
+
+```text
+chat-v1/
+├── index.tsx               # Main chat screen component
+├── input-bar.tsx           # Custom expanding input field
+├── streaming-text.tsx      # Character-by-character animation
+├── header.tsx              # Fixed header ("ChadGPT")
+├── empty-chat-options.tsx  # Grid of quick-action chips
+└── types.ts                # IChipOption, IChipGrid interfaces
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `react-native-gifted-chat` | Chat UI framework with message list and composer |
+| `react-native-reanimated` | Powers the text streaming fade-in animation |
+| `expo-font` | Custom font loading (SF Pro Rounded, Helvetica Now Display) |
+| `expo-symbols` | iOS native SF Symbols for icons |
+| `expo-vector-icons` | MaterialCommunityIcons, Ionicons, FontAwesome icons |
+
+## Usage Example
+
+```tsx
+import ChatV1 from "./components/templates/chat-v1";
+
+export default function ChatScreen() {
+  return <ChatV1 />;
+}
+```

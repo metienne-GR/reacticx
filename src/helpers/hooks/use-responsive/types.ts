@@ -1,6 +1,6 @@
 import type { DeviceType } from "expo-device";
 
-type TBreakpoint = "compact" | "medium" | "expanded";
+type TBreakpoint = "compact" | "medium" | "expanded" | "nano";
 
 interface IResponsiveInfo {
   width: number;
@@ -18,7 +18,7 @@ interface IResponsiveInfo {
   isMedium: boolean;
   isExpanded: boolean;
   rf: (size: number) => number;
-  rv: <T>(values: { compact: T; medium?: T; expanded?: T }) => T;
+  rv: <T>(values: { compact: T; medium?: T; expanded?: T; nano?: T }) => T;
 }
 
 export type { IResponsiveInfo, TBreakpoint };

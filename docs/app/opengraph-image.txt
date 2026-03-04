@@ -1,1 +1,0 @@
-Reacticx - React Native UI Components Library

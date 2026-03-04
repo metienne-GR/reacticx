@@ -1,0 +1,330 @@
+---
+title: Settings V1
+description: A pixel-perfect iOS-style settings screen built with a Radix-like compound component pattern. Compose sections, groups, items, toggles, avatars, and icons declaratively.
+preview: /static/media/settings-v1.png
+tags:
+  - react-native-settings
+  - ios-style
+  - compound-components
+  - expo-router
+category: Settings
+---
+
+## Features
+
+- iOS-native settings layout with Radix-style compound component composition
+- Declarative API — compose `Root`, `Section`, `Group`, `Item`, `Icon`, `Switch`, `Chevron`, and more
+- Automatic separators between items with icon-aware insets
+- Toggle switches, navigation items, disabled states, and value displays
+- Avatar and AvatarStack for profile sections
+- Color-coded icon badges with customizable background
+- Section headers (`Label`) and footers (`Footer`)
+- iOS SF Symbol support via `expo-symbols` with Android fallback
+- Dark theme with iOS system colors
+
+## Installation
+
+<Steps>
+<Step>
+
+### Install the template
+
+```package-install
+npx reacticx add settings-v1
+```
+
+</Step>
+
+<Step>
+
+### Install dependencies
+
+```package-install
+expo-router expo-symbols expo-vector-icons
+```
+
+</Step>
+
+<Step>
+
+### Import the components
+
+```tsx
+import * as Settings from "./components/templates/settings-v1/components";
+```
+
+</Step>
+</Steps>
+
+## Usage Guide
+
+Settings V1 uses a **compound component pattern** (like Radix UI). You compose the screen declaratively by nesting primitives — no logic or state is required inside the components themselves.
+
+### Basic Structure
+
+Every settings screen follows this hierarchy:
+
+```tsx
+<Settings.Root>
+  <Settings.Section>
+    <Settings.Label>Section Title</Settings.Label>
+    <Settings.Group>
+      <Settings.Item>
+        {/* children */}
+      </Settings.Item>
+    </Settings.Group>
+    <Settings.Footer>Helper text goes here.</Settings.Footer>
+  </Settings.Section>
+</Settings.Root>
+```
+
+### Navigation Item
+
+An item with a chevron that navigates somewhere on press:
+
+```tsx
+<Settings.Item onPress={() => router.push("/appearance")}>
+  <Settings.Icon
+    color="#5856D6"
+    icon={<Ionicons name="color-palette-outline" size={18} color="#FFFFFF" />}
+  />
+  <Settings.Content>
+    <Settings.Title>Appearance</Settings.Title>
+  </Settings.Content>
+  <Settings.Value>Dark</Settings.Value>
+  <Settings.Chevron />
+</Settings.Item>
+```
+
+### Toggle Switch Item
+
+An item with a switch — manage state yourself, the component is fully controlled:
+
+```tsx
+const [notifications, setNotifications] = useState(true);
+
+<Settings.Item>
+  <Settings.Icon
+    color="#FF9F0A"
+    icon={<Ionicons name="notifications-outline" size={18} color="#FFFFFF" />}
+  />
+  <Settings.Content>
+    <Settings.Title>Notifications</Settings.Title>
+  </Settings.Content>
+  <Settings.Switch value={notifications} onValueChange={setNotifications} />
+</Settings.Item>
+```
+
+### Disabled Item
+
+Pass `disabled` to grey out the item and prevent interaction:
+
+```tsx
+<Settings.Item disabled>
+  <Settings.Icon
+    color="#8E8E93"
+    icon={<Ionicons name="server-outline" size={18} color="#FFFFFF" />}
+  />
+  <Settings.Content>
+    <Settings.Title>Experimental API</Settings.Title>
+  </Settings.Content>
+  <Settings.Value>Unavailable</Settings.Value>
+</Settings.Item>
+```
+
+### Profile Section (LargeItem + Avatar)
+
+Use `LargeItem` for a taller row with an avatar:
+
+```tsx
+<Settings.Section>
+  <Settings.Group>
+    <Settings.LargeItem onPress={() => {}}>
+      <Settings.Avatar
+        source={{ uri: "https://example.com/avatar.jpg" }}
+      />
+      <Settings.Content>
+        <Settings.Title style={{ fontSize: 20, fontWeight: "600" }}>
+          John Doe
+        </Settings.Title>
+        <Settings.Subtitle>Apple Account, iCloud, and more</Settings.Subtitle>
+      </Settings.Content>
+      <Settings.Chevron size={18} />
+    </Settings.LargeItem>
+  </Settings.Group>
+</Settings.Section>
+```
+
+### Plain Text Item (No Icon)
+
+Items without icons automatically adjust separator insets:
+
+```tsx
+<Settings.Section>
+  <Settings.Label>About</Settings.Label>
+  <Settings.Group>
+    <Settings.Item onPress={() => {}}>
+      <Settings.Content>
+        <Settings.Title>Terms of Service</Settings.Title>
+      </Settings.Content>
+      <Settings.Chevron />
+    </Settings.Item>
+
+    <Settings.Item>
+      <Settings.Content>
+        <Settings.Title>Version</Settings.Title>
+      </Settings.Content>
+      <Settings.Value>1.0.0</Settings.Value>
+    </Settings.Item>
+  </Settings.Group>
+</Settings.Section>
+```
+
+### Full Example
+
+```tsx
+import React, { useState } from "react";
+import { ScrollView } from "react-native";
+import * as Settings from "./components/templates/settings-v1/components";
+import { COLOR_SCHEME } from "./components/templates/settings-v1/const";
+import { Ionicons } from "@expo/vector-icons";
+
+export default function SettingsScreen() {
+  const [notifications, setNotifications] = useState(true);
+  const [darkMode, setDarkMode] = useState(true);
+
+  return (
+    <ScrollView
+      style={{ flex: 1, backgroundColor: COLOR_SCHEME.BACKGROUND_PRIMARY }}
+      contentContainerStyle={{ padding: 16, paddingBottom: 60 }}
+    >
+      <Settings.Root>
+        <Settings.Section>
+          <Settings.Group>
+            <Settings.LargeItem onPress={() => {}}>
+              <Settings.Avatar
+                source={{ uri: "https://example.com/avatar.jpg" }}
+              />
+              <Settings.Content>
+                <Settings.Title style={{ fontSize: 20, fontWeight: "600" }}>
+                  Jane Doe
+                </Settings.Title>
+                <Settings.Subtitle>
+                  Apple Account, iCloud, and more
+                </Settings.Subtitle>
+              </Settings.Content>
+              <Settings.Chevron size={18} />
+            </Settings.LargeItem>
+          </Settings.Group>
+        </Settings.Section>
+
+        <Settings.Section>
+          <Settings.Group>
+            <Settings.Item>
+              <Settings.Icon
+                color="#FF9F0A"
+                icon={
+                  <Ionicons
+                    name="notifications-outline"
+                    size={18}
+                    color="#FFFFFF"
+                  />
+                }
+              />
+              <Settings.Content>
+                <Settings.Title>Notifications</Settings.Title>
+              </Settings.Content>
+              <Settings.Switch
+                value={notifications}
+                onValueChange={setNotifications}
+              />
+            </Settings.Item>
+
+            <Settings.Item>
+              <Settings.Icon
+                color="#5856D6"
+                icon={
+                  <Ionicons
+                    name="moon-outline"
+                    size={18}
+                    color="#FFFFFF"
+                  />
+                }
+              />
+              <Settings.Content>
+                <Settings.Title>Dark Mode</Settings.Title>
+              </Settings.Content>
+              <Settings.Switch
+                value={darkMode}
+                onValueChange={setDarkMode}
+              />
+            </Settings.Item>
+          </Settings.Group>
+        </Settings.Section>
+
+        <Settings.Section>
+          <Settings.Label>About</Settings.Label>
+          <Settings.Group>
+            <Settings.Item onPress={() => {}}>
+              <Settings.Content>
+                <Settings.Title>Privacy Policy</Settings.Title>
+              </Settings.Content>
+              <Settings.Chevron />
+            </Settings.Item>
+
+            <Settings.Item>
+              <Settings.Content>
+                <Settings.Title>Version</Settings.Title>
+              </Settings.Content>
+              <Settings.Value>1.0.0</Settings.Value>
+            </Settings.Item>
+          </Settings.Group>
+          <Settings.Footer>
+            Built with Reacticx Settings V1 template.
+          </Settings.Footer>
+        </Settings.Section>
+      </Settings.Root>
+    </ScrollView>
+  );
+}
+```
+
+## Component API
+
+| Component | Props | Description |
+|-----------|-------|-------------|
+| `Root` | `style?` | Top-level container, sets spacing between sections |
+| `Section` | `style?` | Groups related items with optional label/footer |
+| `Group` | `style?` | Card container with rounded corners and auto-separators |
+| `Label` | `children: string` | Uppercase section header text |
+| `Footer` | `children: string` | Helper text below a group |
+| `Item` | `onPress?`, `disabled?`, `style?` | Standard row (pressable if `onPress` provided) |
+| `LargeItem` | `onPress?`, `style?` | Taller row for profile/avatar sections |
+| `Icon` | `icon`, `color?`, `size?`, `borderRadius?` | Colored badge wrapping any icon element |
+| `Content` | `style?` | Flex container for title/subtitle |
+| `Title` | `children: string`, `style?` | Primary text (17px, white) |
+| `Subtitle` | `children` | Secondary text (15px, gray) |
+| `Value` | `children: string` | Right-aligned value text (gray) |
+| `Switch` | `value`, `onValueChange`, `disabled?` | iOS-styled toggle switch |
+| `Chevron` | `color?`, `size?` | Right-pointing navigation arrow |
+| `Avatar` | `source`, `size?` | Circular profile image (default 64px) |
+| `AvatarStack` | `children` | Overlapping avatar row |
+| `Separator` | `inset?` | Hairline divider (auto-inserted by Group) |
+
+## Project Structure
+
+```text
+settings-v1/
+├── index.tsx        # Example settings screen using the components
+├── components.tsx   # All compound components (Root, Section, Group, Item, etc.)
+├── types.ts         # TypeScript interfaces for every component
+└── const.ts         # COLOR_SCHEME constants
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `expo-router` | Stack navigation integration |
+| `expo-symbols` | iOS native SF Symbols for settings icons |
+| `expo-vector-icons` | FontAwesome6 and Ionicons as fallback icons |

@@ -9,6 +9,7 @@ import { ThemeMode, ThemeProvider } from "@/components/organisms/theme-switch";
 import { ThemeProvider as NativeThemeProvider } from "@react-navigation/native";
 import { AuraLiftGlobalContextProvider } from "@/components/organisms/aura-lift";
 import { SiriProvider } from "@/components/organisms/apple-intelligence";
+import { DynamicIsland } from "@/components/molecules/dynamic-island";
 
 Appearance.setColorScheme("dark");
 
@@ -40,5 +41,6 @@ export default function RootLayout() {
         </ThemeProvider>
       </AuraLiftGlobalContextProvider>
     </SiriProvider>
+    // </DynamicIsland.Provider>
   );
 }

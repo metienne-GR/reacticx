@@ -191,8 +191,11 @@ export default function SignUpV1() {
 
             <View style={styles.inputContainer}>
               <TextInput
+                cursorColor={"#d1a0f2"}
+                selectionColor={"#d1a0f2"}
                 placeholder="eg.reacticxislove@gmail.com"
                 placeholderTextColor="rgba(255,255,255,0.6)"
+                autoCapitalize="none"
                 style={[
                   styles.textInput,
                   {
@@ -217,9 +220,12 @@ export default function SignUpV1() {
 
             <View style={styles.inputContainer}>
               <TextInput
+                cursorColor={"#d1a0f2"}
+                selectionColor={"#d1a0f2"}
                 secureTextEntry
                 placeholder="Enter your password"
                 placeholderTextColor="rgba(255,255,255,0.6)"
+                autoCapitalize="none"
                 style={[
                   styles.textInput,
                   {
@@ -245,6 +251,9 @@ export default function SignUpV1() {
 
             <View style={styles.inputContainer}>
               <TextInput
+                cursorColor={"#d1a0f2"}
+                selectionColor={"#d1a0f2"}
+                autoCapitalize="none"
                 secureTextEntry
                 placeholder="Enter your password again"
                 placeholderTextColor="rgba(255,255,255,0.6)"
@@ -258,7 +267,7 @@ export default function SignUpV1() {
             </View>
           </View>
 
-          <TouchableOpacity
+          <Pressable
             style={[
               styles.signUpButton,
               {
@@ -281,7 +290,7 @@ export default function SignUpV1() {
             >
               Sign Up
             </Text>
-          </TouchableOpacity>
+          </Pressable>
 
           <Text
             style={[
@@ -388,7 +397,7 @@ const styles = StyleSheet.create({
 
   signUpButton: {
     backgroundColor: "#fff",
-    paddingVertical: 16,
+    paddingVertical: 14,
     borderRadius: 14,
     alignItems: "center",
   },
