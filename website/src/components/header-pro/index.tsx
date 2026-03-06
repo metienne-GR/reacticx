@@ -187,31 +187,27 @@ export function HeaderPro() {
         }
       `}</style>
 
-      <div className="w-full shiny-banner group">
+      <div className="shiny-banner group">
         <div className="glow-effect" />
-        <div className="w-full px-3 py-1.5 relative z-10">
+        <div className="px-3 py-1.5 relative z-10">
           <Link
             href="/templates"
             className="flex items-center justify-center gap-2.5 md:gap-3 transition-all duration-300 tracking-tighter"
           >
-            {/* Desktop View */}
             <span className="hidden md:flex items-center gap-3">
               <span className="text-black dark:text-white tracking-tighter text-sm">
                 <span className="font-bold">Reactix</span> has now Ready to use
-                templates! Explore a collection of pre-built, customizable
-                templates.
+                templates! Check-out now.
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <ArrowUpRight className="w-3.5 h-3.5 text-black dark:text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </span>
 
-            {/* Mobile View */}
             <span className="flex md:hidden items-center gap-2.5">
               <PartyPopper className="w-5 h-5 text-black dark:text-white flex-shrink-0" />
               <span className="text-black dark:text-white font-medium tracking-tight text-xs leading-tight">
-                Reactix has now Ready to use templates! Explore a collection of
-                pre-built, customizable templates.
+                Reactix has now Ready to use templates! Check-out now.
               </span>
               <ArrowUpRight className="w-3.5 h-3.5 text-black dark:text-white flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>

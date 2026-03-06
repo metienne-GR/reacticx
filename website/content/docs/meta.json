@@ -6,6 +6,8 @@
     "---Reacticx---",
     "index",
     "about",
+    "usage",
+    "troubleshooting",
     "---Shaders---",
     "components/apple-intelligence",
     "components/aurora",
@@ -14,6 +16,7 @@
     "components/grainy-gradient",
     "components/mesh-gradient",
     "components/siri-orb",
+    "components/spectral-wave",
     "components/skia-ripple",
     "components/wave-scrawler",
 

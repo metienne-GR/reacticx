@@ -41,7 +41,8 @@ export function HeroFlip() {
               src={libraries[index].logoDark}
               alt={libraries[index].name}
               fill
-              className="object-contain hidden dark:block"
+              unoptimized
+              className="object-contain"
             />
           </div>
         </motion.div>

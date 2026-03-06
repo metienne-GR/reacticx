@@ -242,9 +242,8 @@ button {
     --gradient-angle: 360deg;
   }
 }
-/* a[href="/docs/components/squiggly-slider"]::after,
-a[href="/docs/components/apple-intelligence"]::after,
-a[href="/docs/components/parallax-header"]::after {
+a[href="/docs/components/spectral-wave"]::after,
+a[href="/docs/components/spectral-wave"]::after {
   content: "New";
   position: absolute;
   right: 0.2rem;
@@ -270,10 +269,9 @@ a[href="/docs/components/parallax-header"]::after {
       border-box;
 
   animation: gradient-angle 3s linear infinite;
-} */
-/* .dark a[href="/docs/components/parallax-header"]::after,
-.dark a[href="/docs/components/squiggly-slider"]::after,
-.dark a[href="/docs/components/apple-intelligence"]::after {
+}
+.dark a[href="/docs/components/spectral-wave"]::after,
+.dark a[href="/docs/components/spectral-wave"]::after {
   color: rgb(255, 255, 255);
   background:
     linear-gradient(rgb(20, 20, 20), rgb(20, 20, 20)) padding-box,
@@ -286,7 +284,7 @@ a[href="/docs/components/parallax-header"]::after {
         transparent 40%
       )
       border-box;
-} */
+}
 
 :root {
   --sidebar: hsl(0 0% 98%);

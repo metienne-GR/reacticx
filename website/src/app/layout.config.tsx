@@ -15,6 +15,7 @@ export const baseOptions = <T extends Partial<BaseLayoutProps>>(
           height={20}
           width={20}
           src="/static/deps/dark_logo.png"
+          unoptimized
         />
         <Image
           alt="Reactix Logo"
@@ -22,6 +23,7 @@ export const baseOptions = <T extends Partial<BaseLayoutProps>>(
           height={60}
           width={50}
           src="/static/deps/white_glow.png"
+          unoptimized
         />
         <span className="hidden md:inline-flex items-center font-bold text-lg tracking-tight text-black dark:text-white">
           Reactix

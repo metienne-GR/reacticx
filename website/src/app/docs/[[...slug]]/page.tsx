@@ -13,6 +13,7 @@ import type { Metadata } from "next";
 import defaultMdxComponents, { createRelativeLink } from "fumadocs-ui/mdx";
 import { TOCItemType } from "fumadocs-core/toc";
 import { CopyMarkdownButton } from "@/components/copy-markdown-button";
+import { ViewOptions } from "@/components/page-actions";
 import {
   PreviewClient,
   PreviewComment,
@@ -56,10 +57,14 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
       <div className="ml-8 flex items-center gap-4 mt-0">
         <EditOnGitHub
           className="border-0 text-black dark:text-white [&_svg]:text-black dark:[&_svg]:text-white"
-          href={`https://github.com/rit3zh/reacticx/tree/main/docs/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
+          href={`https://github.com/rit3zh/reacticx/tree/main/website/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
         />
         <CopyMarkdownButton
           markdownUrl={`/llms.mdx/${params.slug ? params.slug.join("/") : ""}`}
+        />
+        <ViewOptions
+          markdownUrl={`${page.url}.mdx`}
+          githubUrl={`https://github.com/rit3zh/reacticx/tree/main/website/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
         />
       </div>
       <DocsBody className="ml-8">

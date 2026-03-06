@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 122,
+  "totalComponents": 124,
   "categories": [
     "ai",
     "atoms",
@@ -200,6 +200,20 @@
       "path": "src/components/molecules/card",
       "folders": [],
       "files": ["index.tsx", "types.ts"]
+    },
+    "chat-v1": {
+      "name": "chat-v1",
+      "category": "templates",
+      "path": "src/components/templates/chat-v1",
+      "folders": [],
+      "files": [
+        "empty-chat-options.tsx",
+        "header.tsx",
+        "index.tsx",
+        "input-bar.tsx",
+        "streaming-text.tsx",
+        "types.ts"
+      ]
     },
     "check-box": {
       "name": "check-box",
@@ -783,6 +797,13 @@
       "path": "src/components/organisms/skia-ripple",
       "folders": [],
       "files": ["conf.ts", "hook.ts", "index.tsx", "types.ts"]
+    },
+    "spectral-wave": {
+      "name": "spectral-wave",
+      "category": "organisms",
+      "path": "src/components/organisms/spectral-wave",
+      "folders": [],
+      "files": ["conf.ts", "const.ts", "index.tsx", "types.ts", "utils.ts"]
     },
     "spin-button": {
       "name": "spin-button",
