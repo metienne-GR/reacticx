@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 115,
+  "totalComponents": 124,
   "categories": [
     "ai",
     "atoms",
@@ -91,6 +91,28 @@
       "folders": [],
       "files": ["const.ts", "index.tsx", "types.ts"]
     },
+    "apple-intelligence": {
+      "name": "apple-intelligence",
+      "category": "organisms",
+      "path": "src/components/organisms/apple-intelligence",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "context.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts",
+        "use-siri-uniforms.ts"
+      ]
+    },
+    "aura-lift": {
+      "name": "aura-lift",
+      "category": "organisms",
+      "path": "src/components/organisms/aura-lift",
+      "folders": [],
+      "files": ["conf.ts", "context.tsx", "index.tsx", "types.ts"]
+    },
     "aurora": {
       "name": "aurora",
       "category": "molecules",
@@ -147,10 +169,10 @@
       "folders": [],
       "files": ["conf.ts", "index.tsx", "types.ts"]
     },
-    "breadcrumbs": {
-      "name": "breadcrumbs",
+    "Breadcrumbs": {
+      "name": "Breadcrumbs",
       "category": "molecules",
-      "path": "src/components/molecules/breadcrumbs",
+      "path": "src/components/molecules/Breadcrumbs",
       "folders": [
         {
           "name": "children",
@@ -178,6 +200,20 @@
       "path": "src/components/molecules/card",
       "folders": [],
       "files": ["index.tsx", "types.ts"]
+    },
+    "chat-v1": {
+      "name": "chat-v1",
+      "category": "templates",
+      "path": "src/components/templates/chat-v1",
+      "folders": [],
+      "files": [
+        "empty-chat-options.tsx",
+        "header.tsx",
+        "index.tsx",
+        "input-bar.tsx",
+        "streaming-text.tsx",
+        "types.ts"
+      ]
     },
     "check-box": {
       "name": "check-box",
@@ -448,10 +484,10 @@
       "folders": [],
       "files": ["conf.ts", "helper.ts", "index.tsx", "types.ts"]
     },
-    "list": {
-      "name": "list",
+    "List": {
+      "name": "List",
       "category": "molecules",
-      "path": "src/components/molecules/list",
+      "path": "src/components/molecules/List",
       "folders": [
         {
           "name": "children",
@@ -514,7 +550,13 @@
       "category": "organisms",
       "path": "src/components/organisms/mesh-gradient",
       "folders": [],
-      "files": ["conf.ts", "const.ts", "index.tsx", "types.ts"]
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "index.tsx",
+        "types.ts",
+        "useFrameTime.ts"
+      ]
     },
     "morphing-tabbar": {
       "name": "morphing-tabbar",
@@ -537,10 +579,10 @@
       "folders": [],
       "files": ["const.ts", "index.tsx", "types.ts"]
     },
-    "pagination": {
-      "name": "pagination",
+    "Pagination": {
+      "name": "Pagination",
       "category": "molecules",
-      "path": "src/components/molecules/pagination",
+      "path": "src/components/molecules/Pagination",
       "folders": [],
       "files": ["Pagination.tsx", "Pagination.types.ts"]
     },
@@ -599,6 +641,13 @@
       "name": "pressable",
       "category": "atoms",
       "path": "src/components/atoms/pressable",
+      "folders": [],
+      "files": ["index.tsx", "types.ts"]
+    },
+    "progress": {
+      "name": "progress",
+      "category": "organisms",
+      "path": "src/components/organisms/progress",
       "folders": [],
       "files": ["index.tsx", "types.ts"]
     },
@@ -707,10 +756,17 @@
       "folders": [],
       "files": ["index.tsx", "presets.ts", "types.ts"]
     },
-    "shimmer": {
-      "name": "shimmer",
+    "settings-v1": {
+      "name": "settings-v1",
+      "category": "templates",
+      "path": "src/components/templates/settings-v1",
+      "folders": [],
+      "files": ["components.tsx", "const.ts", "index.tsx", "types.ts"]
+    },
+    "Shimmer": {
+      "name": "Shimmer",
       "category": "molecules",
-      "path": "src/components/molecules/shimmer",
+      "path": "src/components/molecules/Shimmer",
       "folders": [],
       "files": ["Shimmer.tsx", "Shimmer.types.ts", "const.ts"]
     },
@@ -721,12 +777,33 @@
       "folders": [],
       "files": ["conf.ts", "index.tsx", "types.ts"]
     },
+    "sign-up-v1": {
+      "name": "sign-up-v1",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v1",
+      "folders": [],
+      "files": ["background-gradient.tsx", "icons.tsx", "index.tsx", "types.ts"]
+    },
+    "sign-up-v2": {
+      "name": "sign-up-v2",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v2",
+      "folders": [],
+      "files": ["background-grid.tsx", "index.tsx", "types.ts"]
+    },
     "skia-ripple": {
       "name": "skia-ripple",
       "category": "organisms",
       "path": "src/components/organisms/skia-ripple",
       "folders": [],
       "files": ["conf.ts", "hook.ts", "index.tsx", "types.ts"]
+    },
+    "spectral-wave": {
+      "name": "spectral-wave",
+      "category": "organisms",
+      "path": "src/components/organisms/spectral-wave",
+      "folders": [],
+      "files": ["conf.ts", "const.ts", "index.tsx", "types.ts", "utils.ts"]
     },
     "spin-button": {
       "name": "spin-button",
@@ -748,6 +825,13 @@
       "path": "src/components/molecules/split-view",
       "folders": [],
       "files": ["conf.ts", "index.tsx", "types.ts"]
+    },
+    "squiggly-slider": {
+      "name": "squiggly-slider",
+      "category": "molecules",
+      "path": "src/components/molecules/squiggly-slider",
+      "folders": [],
+      "files": ["const.ts", "index.tsx", "types.ts"]
     },
     "stack-aware-tabs": {
       "name": "stack-aware-tabs",
@@ -847,10 +931,10 @@
       "folders": [],
       "files": ["const.ts", "helpers.ts", "index.tsx", "types.ts"]
     },
-    "toast": {
-      "name": "toast",
+    "Toast": {
+      "name": "Toast",
       "category": "molecules",
-      "path": "src/components/molecules/toast",
+      "path": "src/components/molecules/Toast",
       "folders": [
         {
           "name": "context",

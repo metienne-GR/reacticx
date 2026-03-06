@@ -1,0 +1,89 @@
+---
+title: Sign Up V1
+description: A modern sign-up screen featuring a radial purple gradient background rendered with Skia, social login buttons, and responsive typography.
+preview: /static/media/sign-up-v1.png
+tags:
+  - react-native-auth
+  - sign-up
+  - skia-gradient
+  - social-login
+category: Authentication
+---
+
+## Features
+
+- Purple radial gradient background with 7-color stop points rendered via Skia Canvas
+- Email, password, and confirm password input fields with custom validation styling
+- Social login buttons for Google and GitHub with custom SVG icons
+- "OR" divider with dynamically calculated width
+- Responsive text sizing using the `useResponsive` hook
+- Custom fonts (SF Pro Rounded, Helvetica Now Display)
+- Purple accent colors for focused inputs (#d1a0f2)
+- Safe area aware layout
+
+## Installation
+
+<Steps>
+<Step>
+
+### Install the template
+
+```package-install
+npx reacticx add sign-up-v1
+```
+
+</Step>
+
+<Step>
+
+### Install dependencies
+
+```package-install
+@shopify/react-native-skia expo-font expo-vector-icons react-native-safe-area-context
+```
+
+</Step>
+
+<Step>
+
+### Import and use
+
+```tsx
+import SignUpV1 from "./components/templates/sign-up-v1";
+
+export default function App() {
+  return <SignUpV1 />;
+}
+```
+
+</Step>
+</Steps>
+
+## Project Structure
+
+```text
+sign-up-v1/
+├── index.tsx              # Main sign-up screen component
+├── background-gradient.tsx # Radial gradient background using Skia
+├── icons.tsx              # Google and GitHub SVG icons
+└── types.ts               # TypeScript interfaces
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `@shopify/react-native-skia` | Canvas rendering for the radial gradient background |
+| `expo-font` | Custom font loading |
+| `expo-vector-icons` | AntDesign icons for input fields |
+| `react-native-safe-area-context` | Safe area insets handling |
+
+## Usage Example
+
+```tsx
+import SignUpV1 from "./components/templates/sign-up-v1";
+
+export default function AuthScreen() {
+  return <SignUpV1 />;
+}
+```

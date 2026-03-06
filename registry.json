@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 115,
+  "totalComponents": 124,
   "categories": [
     "ai",
     "atoms",
@@ -126,6 +126,33 @@
         "types.ts"
       ]
     },
+    "apple-intelligence": {
+      "name": "apple-intelligence",
+      "category": "organisms",
+      "path": "src/components/organisms/apple-intelligence",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "context.ts",
+        "helpers.ts",
+        "index.tsx",
+        "types.ts",
+        "use-siri-uniforms.ts"
+      ]
+    },
+    "aura-lift": {
+      "name": "aura-lift",
+      "category": "organisms",
+      "path": "src/components/organisms/aura-lift",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "context.tsx",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "aurora": {
       "name": "aurora",
       "category": "molecules",
@@ -216,10 +243,10 @@
         "types.ts"
       ]
     },
-    "breadcrumbs": {
-      "name": "breadcrumbs",
+    "Breadcrumbs": {
+      "name": "Breadcrumbs",
       "category": "molecules",
-      "path": "src/components/molecules/breadcrumbs",
+      "path": "src/components/molecules/Breadcrumbs",
       "folders": [
         {
           "name": "children",
@@ -254,6 +281,20 @@
       "folders": [],
       "files": [
         "index.tsx",
+        "types.ts"
+      ]
+    },
+    "chat-v1": {
+      "name": "chat-v1",
+      "category": "templates",
+      "path": "src/components/templates/chat-v1",
+      "folders": [],
+      "files": [
+        "empty-chat-options.tsx",
+        "header.tsx",
+        "index.tsx",
+        "input-bar.tsx",
+        "streaming-text.tsx",
         "types.ts"
       ]
     },
@@ -517,15 +558,15 @@
       "path": "src/components/templates/sheet/floating-sheet",
       "folders": [
         {
-          "name": "constants",
-          "files": [
-            "sizes/sheetSizes.ts"
-          ]
-        },
-        {
           "name": "types",
           "files": [
             "FloatingPlayer.types.ts"
+          ]
+        },
+        {
+          "name": "constants",
+          "files": [
+            "sizes/sheetSizes.ts"
           ]
         },
         {
@@ -654,10 +695,10 @@
         "types.ts"
       ]
     },
-    "list": {
-      "name": "list",
+    "List": {
+      "name": "List",
       "category": "molecules",
-      "path": "src/components/molecules/list",
+      "path": "src/components/molecules/List",
       "folders": [
         {
           "name": "children",
@@ -714,19 +755,19 @@
       "path": "src/components/templates/media-list",
       "folders": [
         {
+          "name": "utils",
+          "files": [
+            "chunk.ts",
+            "snap.ts"
+          ]
+        },
+        {
           "name": "children",
           "files": [
             "MediaListSubtitle.tsx",
             "MediaListTitle.tsx",
             "MediaListTitleWrapper.tsx",
             "MediaListWrapper.tsx"
-          ]
-        },
-        {
-          "name": "utils",
-          "files": [
-            "chunk.ts",
-            "snap.ts"
           ]
         }
       ],
@@ -744,7 +785,8 @@
         "conf.ts",
         "const.ts",
         "index.tsx",
-        "types.ts"
+        "types.ts",
+        "useFrameTime.ts"
       ]
     },
     "morphing-tabbar": {
@@ -779,10 +821,10 @@
         "types.ts"
       ]
     },
-    "pagination": {
-      "name": "pagination",
+    "Pagination": {
+      "name": "Pagination",
       "category": "molecules",
-      "path": "src/components/molecules/pagination",
+      "path": "src/components/molecules/Pagination",
       "folders": [],
       "files": [
         "Pagination.tsx",
@@ -805,12 +847,9 @@
       "path": "src/components/templates/parallax-header",
       "folders": [
         {
-          "name": "components",
+          "name": "types",
           "files": [
-            "AnimatedHeader.tsx",
-            "AnimatedNavBar.tsx",
-            "AnimatedScrollView.tsx",
-            "AnimatedScrollViewTitle.tsx"
+            "index.ts"
           ]
         },
         {
@@ -820,11 +859,12 @@
           ]
         },
         {
-          "name": "helpers",
+          "name": "components",
           "files": [
-            "header/HeaderNavBar.tsx",
-            "wrapper/AnimatedScrollViewTitleWrapper.tsx",
-            "wrapper/HeaderComponentWrapper.tsx"
+            "AnimatedHeader.tsx",
+            "AnimatedNavBar.tsx",
+            "AnimatedScrollView.tsx",
+            "AnimatedScrollViewTitle.tsx"
           ]
         },
         {
@@ -835,9 +875,11 @@
           ]
         },
         {
-          "name": "types",
+          "name": "helpers",
           "files": [
-            "index.ts"
+            "header/HeaderNavBar.tsx",
+            "wrapper/AnimatedScrollViewTitleWrapper.tsx",
+            "wrapper/HeaderComponentWrapper.tsx"
           ]
         }
       ],
@@ -859,6 +901,16 @@
       "name": "pressable",
       "category": "atoms",
       "path": "src/components/atoms/pressable",
+      "folders": [],
+      "files": [
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "progress": {
+      "name": "progress",
+      "category": "organisms",
+      "path": "src/components/organisms/progress",
       "folders": [],
       "files": [
         "index.tsx",
@@ -1022,10 +1074,22 @@
         "types.ts"
       ]
     },
-    "shimmer": {
-      "name": "shimmer",
+    "settings-v1": {
+      "name": "settings-v1",
+      "category": "templates",
+      "path": "src/components/templates/settings-v1",
+      "folders": [],
+      "files": [
+        "components.tsx",
+        "const.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "Shimmer": {
+      "name": "Shimmer",
       "category": "molecules",
-      "path": "src/components/molecules/shimmer",
+      "path": "src/components/molecules/Shimmer",
       "folders": [],
       "files": [
         "Shimmer.tsx",
@@ -1044,6 +1108,29 @@
         "types.ts"
       ]
     },
+    "sign-up-v1": {
+      "name": "sign-up-v1",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v1",
+      "folders": [],
+      "files": [
+        "background-gradient.tsx",
+        "icons.tsx",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "sign-up-v2": {
+      "name": "sign-up-v2",
+      "category": "templates",
+      "path": "src/components/templates/sign-up-v2",
+      "folders": [],
+      "files": [
+        "background-grid.tsx",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
     "skia-ripple": {
       "name": "skia-ripple",
       "category": "organisms",
@@ -1054,6 +1141,19 @@
         "hook.ts",
         "index.tsx",
         "types.ts"
+      ]
+    },
+    "spectral-wave": {
+      "name": "spectral-wave",
+      "category": "organisms",
+      "path": "src/components/organisms/spectral-wave",
+      "folders": [],
+      "files": [
+        "conf.ts",
+        "const.ts",
+        "index.tsx",
+        "types.ts",
+        "utils.ts"
       ]
     },
     "spin-button": {
@@ -1084,6 +1184,17 @@
       "folders": [],
       "files": [
         "conf.ts",
+        "index.tsx",
+        "types.ts"
+      ]
+    },
+    "squiggly-slider": {
+      "name": "squiggly-slider",
+      "category": "molecules",
+      "path": "src/components/molecules/squiggly-slider",
+      "folders": [],
+      "files": [
+        "const.ts",
         "index.tsx",
         "types.ts"
       ]
@@ -1218,10 +1329,10 @@
         "types.ts"
       ]
     },
-    "toast": {
-      "name": "toast",
+    "Toast": {
+      "name": "Toast",
       "category": "molecules",
-      "path": "src/components/molecules/toast",
+      "path": "src/components/molecules/Toast",
       "folders": [
         {
           "name": "context",
@@ -1372,6 +1483,12 @@
       "path": "src/components/templates/whats-new",
       "folders": [
         {
+          "name": "context",
+          "files": [
+            "WhatsNewContext.ts"
+          ]
+        },
+        {
           "name": "children",
           "files": [
             "WhatsNewButton.tsx",
@@ -1380,12 +1497,6 @@
             "WhatsNewTitle.tsx",
             "WhatsNewTrigger.tsx",
             "WhatsNewWrapper.tsx"
-          ]
-        },
-        {
-          "name": "context",
-          "files": [
-            "WhatsNewContext.ts"
           ]
         }
       ],

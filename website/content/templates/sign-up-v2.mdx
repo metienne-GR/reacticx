@@ -1,0 +1,91 @@
+---
+title: Sign Up V2
+description: A sleek dark-themed sign-up screen with an animated grid background and vignette effect, featuring Apple and Google social login, password visibility toggle, and terms checkbox.
+preview: /static/media/sign-up-v2.png
+tags:
+  - react-native-auth
+  - sign-up
+  - skia-grid
+  - dark-theme
+  - social-login
+category: Authentication
+---
+
+## Features
+
+- Animated grid background with configurable cell size, line color, and width
+- Vignette effect and top fade overlay rendered with Skia
+- Large "Create Account" heading (42px) with dark theme styling
+- Email and password inputs with dark backgrounds (#121212)
+- Eye icon toggle for password visibility
+- "Forgot Password?" link with absolute positioning
+- Terms and Conditions checkbox
+- Social login buttons for Apple and Google
+- Full rounded sign-up button (borderRadius: 99)
+- Responsive layout with `useResponsive` hook
+
+## Installation
+
+<Steps>
+<Step>
+
+### Install the template
+
+```package-install
+npx reacticx add sign-up-v2
+```
+
+</Step>
+
+<Step>
+
+### Install dependencies
+
+```package-install
+@shopify/react-native-skia expo-font expo-vector-icons react-native-safe-area-context
+```
+
+</Step>
+
+<Step>
+
+### Import and use
+
+```tsx
+import SignUpV2 from "./components/templates/sign-up-v2";
+
+export default function App() {
+  return <SignUpV2 />;
+}
+```
+
+</Step>
+</Steps>
+
+## Project Structure
+
+```text
+sign-up-v2/
+├── index.tsx             # Main sign-up screen component
+├── background-grid.tsx   # Animated grid background with vignette effect
+└── types.ts              # GridBackground props interface
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `@shopify/react-native-skia` | Canvas rendering for the animated grid and vignette |
+| `expo-font` | Custom font loading |
+| `expo-vector-icons` | AntDesign and Ionicons for input icons |
+| `react-native-safe-area-context` | Safe area insets handling |
+
+## Usage Example
+
+```tsx
+import SignUpV2 from "./components/templates/sign-up-v2";
+
+export default function AuthScreen() {
+  return <SignUpV2 />;
+}
+```
