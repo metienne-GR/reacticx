@@ -1,0 +1,99 @@
+---
+title: Property Detail V1
+description: An Airbnb-style property detail screen with a parallax image carousel header, animated sticky nav bar, rating bar with Guest Favorite badge, host info, highlights, amenities, map placeholder, and a sticky bottom reserve bar with gradient button.
+preview: /static/media/property-detail-v1.png
+tags:
+  - airbnb
+  - property-detail
+  - real-estate
+  - parallax-header
+  - expo-symbols
+  - travel
+category: Real Estate
+---
+
+## Features
+
+- Parallax image carousel header with swipeable property photos and page counter pill
+- Animated sticky top nav bar that appears on scroll (back, share, save buttons)
+- Floating header buttons with frosted-glass circle style
+- Heart/save toggle with pink highlight on active state
+- Rating bar with star rating, Guest Favorite laurel wreath badge, and review count
+- Host row with avatar, superhost badge, and years hosting
+- Highlights section (trophy, key, calendar) with icon and subtitle
+- Full description with a "Show more" button
+- Amenities list with SF Symbol icons and "Show all" button
+- "Where you'll be" section with map placeholder
+- Sticky bottom reserve bar with strikethrough original price, total price, free cancellation badge, and gradient Reserve button
+- Responsive layout via `useResponsive` hook (`rf`, `rv` scaling)
+- iOS SF Symbols for all icons with safe area inset handling
+
+## Installation
+
+<Steps>
+<Step>
+
+### Install the template
+
+```package-install
+npx reacticx add property-detail-v1
+```
+
+</Step>
+
+<Step>
+
+### Install dependencies
+
+```package-install
+expo-font expo-symbols expo-linear-gradient expo-router react-native-safe-area-context @hugeicons/react-native @hugeicons/core-free-icons @expo/vector-icons
+```
+
+</Step>
+
+<Step>
+
+### Import and use
+
+```tsx
+import PropertyDetail from "./components/templates/property-detail-v1";
+
+export default function App() {
+  return <PropertyDetail />;
+}
+```
+
+</Step>
+</Steps>
+
+## Project Structure
+
+```text
+property-detail-v1/
+└── index.tsx               # Main property detail screen
+```
+
+## Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| `expo-font` | Custom font loading (SF Pro Rounded, Helvetica Now Display) |
+| `expo-symbols` | iOS native SF Symbols for all icons |
+| `expo-linear-gradient` | Gradient fill on the Reserve button |
+| `expo-router` | Navigation (`useRouter`, `Stack.Screen`) |
+| `react-native-safe-area-context` | Safe area insets for bottom bar and header |
+| `@hugeicons/react-native` | Laurel wreath icons for Guest Favorite badge |
+| `@hugeicons/core-free-icons` | Icon definitions (`LaurelWreathLeft01Icon`, `LaurelWreathRight01Icon`) |
+| `@expo/vector-icons` | Ionicons checkmark in the Free Cancellation badge |
+
+> The component also depends on the internal `parallax-header` template and the `use-responsive` helper hook, which are included when you install via the CLI.
+
+## Usage Example
+
+```tsx
+import PropertyDetail from "./components/templates/property-detail-v1";
+
+export default function ListingScreen() {
+  return <PropertyDetail />;
+}
+```

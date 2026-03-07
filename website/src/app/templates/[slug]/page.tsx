@@ -20,6 +20,8 @@ const videoMap: Record<string, string> = {
     "https://pub-9197ce7f777e4624837aafbc57c580a2.r2.dev/template-sign-up-v1.mp4",
   "sign-up-v2":
     "https://pub-9197ce7f777e4624837aafbc57c580a2.r2.dev/template-sign-up-v2.mp4",
+  "property-listing":
+    "https://pub-9197ce7f777e4624837aafbc57c580a2.r2.dev/property-listing-screen.mp4",
 };
 
 function getTemplate(slug: string) {

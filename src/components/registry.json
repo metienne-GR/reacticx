@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 124,
+  "totalComponents": 125,
   "categories": [
     "ai",
     "atoms",
@@ -650,6 +650,13 @@
       "path": "src/components/organisms/progress",
       "folders": [],
       "files": ["index.tsx", "types.ts"]
+    },
+    "property-detail-v1": {
+      "name": "property-detail-v1",
+      "category": "templates",
+      "path": "src/components/templates/property-detail-v1",
+      "folders": [],
+      "files": ["index.tsx"]
     },
     "pulsing-dots": {
       "name": "pulsing-dots",

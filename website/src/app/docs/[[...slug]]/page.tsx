@@ -41,22 +41,22 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
       }}
       toc={page.data.toc as TOCItemType[]}
     >
-      <DocsTitle className="ml-8 font-semibold text-4xl tracking-tighter mb-0">
+      <DocsTitle className="ml-2 md:ml-4 lg:ml-8 font-semibold text-4xl tracking-tighter mb-0">
         {page.data.title}
       </DocsTitle>
-      <DocsDescription className="ml-8 text-xl tracking-tighter mb-0">
+      <DocsDescription className="ml-2 md:ml-4 lg:ml-8 text-xl tracking-tighter mb-0">
         {page.data.description}
       </DocsDescription>
 
       {lastModifiedTime && (
-        <div className="ml-8">
+        <div className="ml-2 md:ml-4 lg:ml-8">
           <PageLastUpdate date={lastModifiedTime} />
         </div>
       )}
 
-      <div className="ml-8 flex items-center gap-4 mt-0">
+      <div className="ml-2 md:ml-4 lg:ml-8 flex flex-wrap items-center gap-2 md:gap-3 mt-2">
         <EditOnGitHub
-          className="border-0 text-black dark:text-white [&_svg]:text-black dark:[&_svg]:text-white"
+          className="flex-shrink-0 border border-fd-border rounded-md px-2 py-1 text-xs md:text-sm text-black dark:text-white [&_svg]:text-black dark:[&_svg]:text-white hover:bg-fd-secondary/80 transition-colors"
           href={`https://github.com/rit3zh/reacticx/tree/main/website/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
         />
         <CopyMarkdownButton
@@ -67,7 +67,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           githubUrl={`https://github.com/rit3zh/reacticx/tree/main/website/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
         />
       </div>
-      <DocsBody className="ml-8">
+      <DocsBody className="ml-2 md:ml-4 lg:ml-8">
         <MDX
           components={{
             ...defaultMdxComponents,

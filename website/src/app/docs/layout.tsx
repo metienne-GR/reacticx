@@ -17,13 +17,13 @@ export default function Layout({ children }: LayoutProps<"/docs">) {
       tree={source.pageTree}
       sidebar={{
         banner: (
-          <div className="flex flex-col gap-2 rounded-md p-2 py-1">
+          <div className="hidden md:flex flex-col gap-2 rounded-md p-2 py-1">
             <Link
               href="https://www.buymeacoffee.com/rit3zh"
               rel="noreferrer"
               target="_blank"
             >
-              <span className="hidden items-center gap-2 md:flex">
+              <span className="flex items-center gap-2">
                 <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book&emoji=📖&slug=rit3zh&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
               </span>
             </Link>

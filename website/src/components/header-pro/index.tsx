@@ -194,7 +194,8 @@ export function HeaderPro() {
             href="/templates"
             className="flex items-center justify-center gap-2.5 md:gap-3 transition-all duration-300 tracking-tighter"
           >
-            <span className="hidden md:flex items-center gap-3">
+            {/* Desktop */}
+            <span className="hidden lg:flex items-center gap-3">
               <span className="text-black dark:text-white tracking-tighter text-sm">
                 <span className="font-bold">Reactix</span> has now Ready to use
                 templates! Check-out now.
@@ -204,12 +205,23 @@ export function HeaderPro() {
               </span>
             </span>
 
-            <span className="flex md:hidden items-center gap-2.5">
-              <PartyPopper className="w-5 h-5 text-black dark:text-white flex-shrink-0" />
-              <span className="text-black dark:text-white font-medium tracking-tight text-xs leading-tight">
-                Reactix has now Ready to use templates! Check-out now.
+            {/* Tablet */}
+            <span className="hidden md:flex lg:hidden items-center gap-2">
+              <PartyPopper className="w-4 h-4 text-black dark:text-white flex-shrink-0" />
+              <span className="text-black dark:text-white font-medium tracking-tight text-sm">
+                <span className="font-bold">Reactix</span> templates are now
+                available!
               </span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-black dark:text-white flex-shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-black dark:text-white shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+
+            {/* Mobile */}
+            <span className="flex md:hidden items-center gap-2.5">
+              <PartyPopper className="w-5 h-5 text-black dark:text-white shrink-0" />
+              <span className="text-black dark:text-white font-medium tracking-tight text-xs leading-tight whitespace-nowrap">
+                + Templates available now!
+              </span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-black dark:text-white shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </Link>
         </div>

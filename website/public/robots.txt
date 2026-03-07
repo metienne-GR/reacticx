@@ -1,0 +1,16 @@
+# Reactix - React Native UI Components Library
+# https://www.reacticx.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.reacticx.com/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Disallow admin/internal paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/

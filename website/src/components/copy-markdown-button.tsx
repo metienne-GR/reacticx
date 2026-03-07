@@ -46,12 +46,13 @@ function CopyMarkdownButton({ markdownUrl }: CopyMarkdownButtonProps) {
       onMouseEnter={onContentPrefetch}
       onTouchStart={onContentPrefetch}
       disabled={isLoading}
-      className="inline-flex items-center gap-1.5 h-7 px-2.5 rounded-md text-xs font-medium
+      className="inline-flex flex-shrink-0 items-center gap-1.5 h-7 px-2 md:px-2.5 rounded-md text-xs font-medium
         bg-fd-secondary text-black dark:text-white border border-fd-border
         hover:bg-fd-secondary/80 disabled:opacity-50 transition-colors [&_svg]:size-3"
     >
       {checked ? <Check /> : <Copy />}
-      Copy Markdown
+      <span className="hidden sm:inline">Copy Markdown</span>
+      <span className="sm:hidden">Copy</span>
     </button>
   );
 }

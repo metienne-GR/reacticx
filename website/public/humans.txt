@@ -1,0 +1,20 @@
+/* TEAM */
+Creator: rit3zh
+Twitter: @rit3zh
+GitHub: https://github.com/rit3zh
+Location: Earth
+
+/* SITE */
+Name: Reactix
+Description: Awesome React Native UI components free and open source
+Built with: Next.js, Fumadocs, Tailwind CSS
+Last update: 2026-03-07
+Standards: HTML5, CSS3, JavaScript ES6+
+Software: VS Code, GitHub
+
+/* THANKS */
+React Native Team
+Expo Team
+Reanimated Team
+Skia Team
+Open Source Community

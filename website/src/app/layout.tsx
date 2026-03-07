@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   robots: "index, follow",
   authors: [{ name: "rit3zh", url: "https://x.com/rit3zh" }],
   creator: "rit3zh",
+  manifest: "/site.webmanifest",
   icons: {
-    icon: [{ url: "/logo.png?v=2", type: "image/png", sizes: "1245x1249" }],
-    shortcut: "/logo.png?v=2",
-    apple: { url: "/logo.png?v=2", sizes: "1245x1249", type: "image/png" },
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
   },
   openGraph: {
     title: siteConfig.name,

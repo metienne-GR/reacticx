@@ -1,0 +1,9 @@
+# Reactix Security Policy
+# https://www.reacticx.com
+
+Contact: https://github.com/rit3zh/reacticx/security/advisories
+Contact: https://twitter.com/rit3zh
+Expires: 2027-03-07T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.reacticx.com/.well-known/security.txt
+Policy: https://github.com/rit3zh/reacticx/security/policy

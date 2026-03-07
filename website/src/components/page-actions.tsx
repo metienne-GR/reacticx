@@ -1,10 +1,16 @@
-'use client';
-import { useMemo, useState } from 'react';
-import { Check, ChevronDown, Copy, ExternalLinkIcon, TextIcon } from 'lucide-react';
-import { cn } from '../lib/cn';
-import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
-import { buttonVariants } from './ui/button';
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+"use client";
+import { useMemo, useState } from "react";
+import {
+  Check,
+  ChevronDown,
+  Copy,
+  ExternalLinkIcon,
+  TextIcon,
+} from "lucide-react";
+import { cn } from "../lib/cn";
+import { useCopyButton } from "fumadocs-ui/utils/use-copy-button";
+import { buttonVariants } from "./ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 const cache = new Map<string, string>();
 
@@ -26,7 +32,7 @@ export function LLMCopyButton({
     try {
       await navigator.clipboard.write([
         new ClipboardItem({
-          'text/plain': fetch(markdownUrl).then(async (res) => {
+          "text/plain": fetch(markdownUrl).then(async (res) => {
             const content = await res.text();
             cache.set(markdownUrl, content);
 
@@ -44,9 +50,9 @@ export function LLMCopyButton({
       disabled={isLoading}
       className={cn(
         buttonVariants({
-          color: 'secondary',
-          size: 'sm',
-          className: 'gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground',
+          color: "secondary",
+          size: "sm",
+          className: "gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground",
         }),
       )}
       onClick={onClick}
@@ -72,12 +78,13 @@ export function ViewOptions({
   githubUrl: string;
 }) {
   const items = useMemo(() => {
-    const pageUrl = typeof window !== 'undefined' ? window.location.href : 'loading';
+    const pageUrl =
+      typeof window !== "undefined" ? window.location.href : "loading";
     const q = `I'm reading the Reacticx documentation at ${pageUrl}. Reacticx is a React Native UI component library built with Reanimated, Skia, and Expo. Please read the page and help me understand: (1) what this component does, (2) how to install and set it up, (3) the available props and configuration options, (4) example usage patterns, and (5) any important caveats or platform-specific notes. Feel free to ask me follow-up questions about my specific use case.`;
 
     return [
       {
-        title: 'Open in GitHub',
+        title: "Open in GitHub",
         href: githubUrl,
         icon: (
           <svg fill="currentColor" role="img" viewBox="0 0 24 24">
@@ -87,12 +94,12 @@ export function ViewOptions({
         ),
       },
       {
-        title: 'View as Markdown',
+        title: "View as Markdown",
         href: markdownUrl,
         icon: <TextIcon />,
       },
       {
-        title: 'Open in Scira AI',
+        title: "Open in Scira AI",
         href: `https://scira.ai/?${new URLSearchParams({
           q,
         })}`,
@@ -156,9 +163,9 @@ export function ViewOptions({
         ),
       },
       {
-        title: 'Open in ChatGPT',
+        title: "Open in ChatGPT",
         href: `https://chatgpt.com/?${new URLSearchParams({
-          hints: 'search',
+          hints: "search",
           q,
         })}`,
         icon: (
@@ -174,7 +181,7 @@ export function ViewOptions({
         ),
       },
       {
-        title: 'Open in Claude',
+        title: "Open in Claude",
         href: `https://claude.ai/new?${new URLSearchParams({
           q,
         })}`,
@@ -191,7 +198,7 @@ export function ViewOptions({
         ),
       },
       {
-        title: 'Open in Cursor',
+        title: "Open in Cursor",
         icon: (
           <svg
             fill="currentColor"
@@ -215,14 +222,15 @@ export function ViewOptions({
       <PopoverTrigger
         className={cn(
           buttonVariants({
-            color: 'secondary',
-            size: 'sm',
-            className: 'gap-2',
+            color: "secondary",
+            size: "sm",
+            className:
+              "gap-1.5 md:gap-2 flex-shrink-0 text-xs md:text-sm px-2 md:px-3",
           }),
         )}
       >
-        Open
-        <ChevronDown className="size-3.5 text-fd-muted-foreground" />
+        <span className="hidden sm:inline">Open</span>
+        <ChevronDown className="size-3 md:size-3.5 text-fd-muted-foreground" />
       </PopoverTrigger>
       <PopoverContent className="flex flex-col">
         {items.map((item) => (
