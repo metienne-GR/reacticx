@@ -13,7 +13,7 @@
     "test": "jest",
     "release": "semantic-release",
     "prepare": "npm run build",
-    "version": "standard-version",
+    "bump": "standard-version",
     "type-check": "tsc --noEmit",
     "docs": "typedoc",
     "docs:deploy": "gh-pages -d docs",
