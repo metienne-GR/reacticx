@@ -1,7 +1,7 @@
-import { Dimensions, StyleSheet, View, ViewStyle } from "react-native";
-import React, { memo } from "react";
+import { Dimensions, Platform, StyleSheet, ViewStyle } from "react-native";
+import React from "react";
 import { BlurCarouselItemProps, BlurCarouselProps } from "./types";
-import { BlurView, type BlurViewProps } from "@sbaiahmed1/react-native-blur";
+import { BlurView, type BlurViewProps } from "expo-blur";
 import Animated, {
   interpolate,
   useAnimatedScrollHandler,
@@ -73,10 +73,27 @@ const CarouselItem = <ItemT,>({
     );
 
     return {
-      blurAmount: blurIntensity,
+      intensity: blurIntensity,
     };
   });
-
+  const animateAndroidStylez = useAnimatedStyle(() => {
+    return {
+      filter: [
+        {
+          blur: interpolate(
+            scrollX.value,
+            [
+              (index - 1) * itemWidth,
+              index * itemWidth,
+              (index + 1) * itemWidth,
+            ],
+            [25, 0, 25],
+            Extrapolation.CLAMP,
+          ),
+        },
+      ],
+    };
+  });
   return (
     <Animated.View
       style={[
@@ -87,23 +104,25 @@ const CarouselItem = <ItemT,>({
         },
       ]}
     >
-      <View
+      <Animated.View
         style={[
           styles.itemContent,
           {
             width: itemWidth - spacing * 2,
           },
+          Platform.OS === "android" ? animateAndroidStylez : null,
         ]}
       >
         {renderItem({ item, index })}
 
-        <AnimatedBlurView
-          style={[StyleSheet.absoluteFillObject, styles.blurOverlay]}
-          blurType="light"
-          animatedProps={animatedBlurProps}
-          reducedTransparencyFallbackColor="transparent"
-        />
-      </View>
+        {Platform.OS === "ios" ? (
+          <AnimatedBlurView
+            style={[StyleSheet.absoluteFillObject, styles.blurOverlay]}
+            tint="light"
+            animatedProps={animatedBlurProps}
+          />
+        ) : null}
+      </Animated.View>
     </Animated.View>
   );
 };
@@ -115,7 +134,7 @@ const BlurCarousel = <ItemT,>({
   itemWidth = ITEM_WIDTH,
   spacing = SPACING,
 }: BlurCarouselProps<ItemT>) => {
-  const scrollX = useSharedValue(0);
+  const scrollX = useSharedValue<number>(0);
 
   const onScroll = useAnimatedScrollHandler({
     onScroll: (event) => {

@@ -1,152 +1,247 @@
-import React from "react";
-import { StyleSheet, Text, View, Alert, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Dock, type IDockItem } from "@/components/organisms/mobile-dock";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
+import { SymbolView } from "expo-symbols";
+import { BlurCarousel } from "@/components/molecules/blur-carousel";
+import { LinearGradient } from "expo-linear-gradient";
 
-function LogoIcon({ url }: { url: string }) {
-  return (
-    <View style={styles.iconContainer}>
-      <Image source={{ uri: url }} style={styles.iconImage} />
-    </View>
-  );
-}
-
-const LOGOS = [
-  {
-    appName: "X",
-    url: "https://cdn.brandfetch.io/idS5WhqBbM/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1768324401335",
-  },
-  {
-    appName: "Github",
-    url: "https://img.icons8.com/?size=1000&id=efFfwotdkiU5&format=png&color=000000",
-  },
-  {
-    appName: "Reddit",
-    url: "https://cdn.brandfetch.io/idkKwm0IT0/w/1000/h/1000/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1768324678544",
-  },
-  {
-    appName: "Discord",
-    url: "https://static.vecteezy.com/system/resources/previews/006/892/625/non_2x/discord-logo-icon-editorial-free-vector.jpg",
-  },
-  {
-    appName: "Pinterest",
-    url: "https://www.citypng.com/public/uploads/preview/apple-pinterest-app-icon-logo-flat-701751695135779qsb0o42acw.png?v=2025091511",
-  },
-  {
-    appName: "Airbnb",
-    url: "https://framerusercontent.com/images/7bkn2MV652JLUJYl05zd0gF13g.png?width=460&height=460",
-  },
-  {
-    appName: "Apple Music",
-    url: "https://cdn.brandfetch.io/id_yBTuraI/w/800/h/800/theme/light/symbol.png?c=1bxid64Mup7aczewSAYMX&t=1715866792263",
-  },
-];
-
-const items: IDockItem[] = LOGOS.map((logo) => ({
-  icon: <LogoIcon url={logo.url} />,
-  label: logo.appName,
-  onPress: () => Alert.alert(`${logo.appName} pressed`),
-}));
-
-export default function DockDemoScreen() {
+export default function App() {
   const [fontLoaded] = useFonts({
     SfProRounded: require("@/assets/fonts/sf-pro-rounded.ttf"),
+    Coolvetica: require("@/assets/fonts/CoolveticaLt-Regular.ttf"),
     HelveticaNowDisplay: require("@/assets/fonts/HelveticaNowDisplayMedium.ttf"),
   });
-  return (
-    <GestureHandlerRootView style={styles.root}>
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.content}>
-          <Text
-            style={[
-              styles.title,
-              {
-                fontFamily: fontLoaded ? "HelveticaNowDisplay" : undefined,
-              },
-            ]}
-          >
-            Love Reacticx?
-          </Text>
-          <Text
-            style={[
-              styles.subtitle,
-              {
-                fontFamily: fontLoaded ? "SfProRounded" : undefined,
-              },
-            ]}
-          >
-            Explore the magic of Reacticx with this interactive mobile dock
-            demo.
-          </Text>
-        </View>
 
-        <View style={styles.dockArea}>
-          <Dock
-            items={items}
-            mass={0.9}
-            damping={25}
-            stiffness={250}
-            size={40}
-            height={60}
-            dockColor={"#1a1a1a"}
-            paddingBottom={8}
-          />
-        </View>
-      </SafeAreaView>
+  const DATA = [
+    {
+      id: "1",
+      title: "Design",
+      subtitle: "Create something beautiful",
+      description: "Transform ideas into stunning visuals with intuitive tools",
+      icon: "paintbrush.fill",
+      gradient: ["#ff375f", "#ff6b8a"],
+      stats: { value: "2.4k", label: "Projects" },
+    },
+    {
+      id: "2",
+      title: "Develop",
+      subtitle: "Build with precision",
+      description: "Write clean code and ship features faster than ever",
+      icon: "chevron.left.forwardslash.chevron.right",
+      gradient: ["#5e5ce6", "#8b8bf5"],
+      stats: { value: "18ms", label: "Response" },
+    },
+    {
+      id: "3",
+      title: "Launch",
+      subtitle: "Ship to the world",
+      description: "Deploy globally with confidence and reliability",
+      icon: "paperplane.fill",
+      gradient: ["#30d158", "#5de37a"],
+      stats: { value: "99.9%", label: "Uptime" },
+    },
+  ];
+
+  return (
+    <GestureHandlerRootView style={styles.container}>
+      <StatusBar style="light" />
+
+      <View style={styles.header}>
+        <Text
+          style={[
+            styles.title,
+            fontLoaded && { fontFamily: "HelveticaNowDisplay" },
+          ]}
+        >
+          Workflow
+        </Text>
+      </View>
+
+      <BlurCarousel
+        data={DATA}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <LinearGradient
+              colors={item.gradient as any}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.cardGradient}
+            />
+
+            <View style={styles.cardTop}>
+              <View style={styles.cardIcon}>
+                <SymbolView
+                  name={item.icon as any}
+                  size={28}
+                  tintColor="#fff"
+                />
+              </View>
+              <View style={styles.badge}>
+                <SymbolView name="star.fill" size={10} tintColor="#fff" />
+                <Text
+                  style={[
+                    styles.badgeText,
+                    fontLoaded && { fontFamily: "SfProRounded" },
+                  ]}
+                >
+                  Pro
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.cardMiddle}>
+              <Text
+                style={[
+                  styles.cardTitle,
+                  fontLoaded && { fontFamily: "Coolvetica" },
+                ]}
+              >
+                {item.title}
+              </Text>
+              <Text
+                style={[
+                  styles.cardSubtitle,
+                  fontLoaded && { fontFamily: "SfProRounded" },
+                ]}
+              >
+                {item.subtitle}
+              </Text>
+              <Text
+                style={[
+                  styles.cardDescription,
+                  fontLoaded && { fontFamily: "SfProRounded" },
+                ]}
+              >
+                {item.description}
+              </Text>
+            </View>
+
+            <View style={styles.cardBottom}>
+              <View style={styles.statBox}>
+                <Text
+                  style={[
+                    styles.statValue,
+                    fontLoaded && { fontFamily: "HelveticaNowDisplay" },
+                  ]}
+                >
+                  {item.stats.value}
+                </Text>
+                <Text
+                  style={[
+                    styles.statLabel,
+                    fontLoaded && { fontFamily: "SfProRounded" },
+                  ]}
+                >
+                  {item.stats.label}
+                </Text>
+              </View>
+              <View style={styles.arrowButton}>
+                <SymbolView name="arrow.right" size={18} tintColor="#fff" />
+              </View>
+            </View>
+          </View>
+        )}
+      />
     </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     flex: 1,
-    backgroundColor: "#121212",
+    backgroundColor: "#0a0a0a",
   },
-
-  safe: {
-    flex: 1,
+  header: {
+    paddingHorizontal: 20,
+    paddingTop: 70,
+    paddingBottom: 40,
   },
-
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 32,
-  },
-
   title: {
-    fontSize: 28,
+    fontSize: 42,
     fontWeight: "700",
-    color: "#ffffff",
-    marginBottom: 8,
+    color: "#fff",
   },
-
-  subtitle: {
-    fontSize: 15,
-    color: "#86868b",
-    textAlign: "center",
-    lineHeight: 22,
+  card: {
+    width: "100%",
+    height: 380,
+    borderRadius: 28,
+    overflow: "hidden",
+    padding: 24,
+    justifyContent: "space-between",
   },
-
-  dockArea: {
-    paddingBottom: 24,
-    alignItems: "center",
+  cardGradient: {
+    ...StyleSheet.absoluteFillObject,
   },
-
-  iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
-    backgroundColor: "white",
+  cardTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+  cardIcon: {
+    width: 60,
+    height: 60,
+    borderRadius: 20,
+    backgroundColor: "rgba(255,255,255,0.2)",
     justifyContent: "center",
     alignItems: "center",
-    overflow: "hidden",
   },
-
-  iconImage: {
-    width: "100%",
-    height: "100%",
+  badge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    backgroundColor: "rgba(0,0,0,0.2)",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 12,
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: "600",
+    color: "#fff",
+  },
+  cardMiddle: {
+    gap: 8,
+  },
+  cardTitle: {
+    fontSize: 44,
+    fontWeight: "600",
+    color: "#fff",
+  },
+  cardSubtitle: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "rgba(255,255,255,0.9)",
+  },
+  cardDescription: {
+    fontSize: 14,
+    color: "rgba(255,255,255,0.6)",
+    lineHeight: 20,
+    marginTop: 4,
+  },
+  cardBottom: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+  },
+  statBox: {
+    gap: 2,
+  },
+  statValue: {
+    fontSize: 32,
+    fontWeight: "700",
+    color: "#fff",
+  },
+  statLabel: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.6)",
+  },
+  arrowButton: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: "rgba(0,0,0,0.2)",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

@@ -1,7 +1,9 @@
 import {
+  StyleProp,
   StyleSheet,
   TextInput,
   View,
+  type TextStyle,
   type TextInputContentSizeChangeEvent,
   type ViewStyle,
 } from "react-native";
@@ -27,7 +29,7 @@ const InputContent = memo<IInputContent>(
     inputStyle,
     onContentSizeChange,
     textInputProps,
-  }) => {
+  }: IInputContent) => {
     const textInputRef = React.useRef<TextInput>(null);
 
     // This little hack help to reset the TextInput content properly on unmount, also controls the "onContentSizeChange" prop.
@@ -41,7 +43,7 @@ const InputContent = memo<IInputContent>(
       };
     }, []);
 
-    const textInputStyles = useMemo(
+    const textInputStyles = useMemo<StyleProp<TextStyle>>(
       () => [styles.input, { maxHeight: inputMaxHeight }, inputStyle],
       [inputMaxHeight, inputStyle],
     );
