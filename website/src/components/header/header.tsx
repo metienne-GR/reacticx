@@ -129,7 +129,7 @@ export function Header() {
       className={cn(
         "sticky top-0 pt-1 z-100 mx-auto w-full max-w-4xl border-transparent border-b md:transition-all md:ease-out",
         scrolled &&
-          "rounded-full border-white/10 bg-black/95 backdrop-blur-sm supports-backdrop-filter:bg-black/50 md:top-2 md:max-w-3xl md:shadow",
+          "border-white/10 bg-black/95 backdrop-blur-sm supports-backdrop-filter:bg-black/50 md:top-2 md:max-w-3xl md:rounded-full md:shadow",
       )}
     >
       <nav
