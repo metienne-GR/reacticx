@@ -46,6 +46,7 @@ console.log("Running: git add . && git commit && git push origin main\n");
 try {
   execSync("git add .", { stdio: "inherit" });
   execSync(`git commit -m "${fullMessage}"`, { stdio: "inherit" });
+  execSync("git pull --rebase origin main", { stdio: "inherit" });
   execSync("git push origin main", { stdio: "inherit" });
   console.log("\nDone!");
 } catch (e) {
