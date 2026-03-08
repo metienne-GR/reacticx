@@ -14,6 +14,7 @@
     "release": "semantic-release",
     "prepare": "npm run build",
     "bump": "standard-version",
+    "commit": "bun scripts/commit.ts",
     "type-check": "tsc --noEmit",
     "docs": "typedoc",
     "docs:deploy": "gh-pages -d docs",
