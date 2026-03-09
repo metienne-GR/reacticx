@@ -32,7 +32,7 @@ program
 program
   .command("add")
   .description("Add a component to your project")
-  .argument("<component>", "Component name to add")
+  .argument("[component]", "Component name to add")
   .option("-o, --overwrite", "Overwrite existing files", false)
   .option("-d, --dir <directory>", "Target directory")
   .action(add);

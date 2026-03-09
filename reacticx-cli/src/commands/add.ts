@@ -2,15 +2,68 @@ import fs from "fs-extra";
 import path from "path";
 import chalk from "chalk";
 import ora from "ora";
+import prompts from "prompts";
 import { getRegistry, getComponentCode } from "../utils/registry.js";
 import { getConfig, validateOrCreateOutDir } from "../utils/config.js";
 import type { AddOptions } from "../typings/index.js";
 
 export async function add<T extends string>(
-  componentName: T,
+  componentName: T | undefined,
   options: AddOptions,
 ) {
   const config = await getConfig();
+
+  if (!componentName) {
+    const spinner = ora("Fetching components...").start();
+    let registry;
+    try {
+      registry = await getRegistry();
+      spinner.stop();
+    } catch (error) {
+      spinner.fail(chalk.red("Failed to fetch components"));
+      console.error(error);
+      process.exit(1);
+    }
+
+    const byCategory: Record<string, string[]> = {};
+    for (const [name, info] of Object.entries(registry.components)) {
+      if (!byCategory[info.category]) byCategory[info.category] = [];
+      byCategory[info.category].push(name);
+    }
+
+    const choices = Object.entries(byCategory)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .flatMap(([category, names]) => [
+        {
+          title: chalk.cyan.bold(`── ${category} ──`),
+          value: null,
+          disabled: true,
+        },
+        ...names.sort().map((name) => ({ title: name, value: name })),
+      ]);
+
+    const response = await prompts({
+      type: "autocomplete",
+      name: "component",
+      message: "Select a component to add",
+      choices,
+      suggest: (input: string, choices: prompts.Choice[]) =>
+        Promise.resolve(
+          choices.filter(
+            (c) =>
+              c.value &&
+              (c.value as string).toLowerCase().includes(input.toLowerCase()),
+          ),
+        ),
+    });
+
+    if (!response.component) {
+      console.log(chalk.dim("Cancelled."));
+      process.exit(0);
+    }
+
+    componentName = response.component as T;
+  }
 
   if (!config && !options.dir) {
     console.log(chalk.red("\n❌ No component.config.json found"));
@@ -57,13 +110,10 @@ export async function add<T extends string>(
 
     await validateOrCreateOutDir(outDir);
 
-    // If --dir is explicitly provided, use it directly without adding category/componentName
-    // Otherwise, use the default structure: outDir/category/componentName
     const componentDir = options.dir
       ? path.join(process.cwd(), outDir)
       : path.join(process.cwd(), outDir, component.category, componentName);
 
-    // Check if any of the component's files already exist (not just the directory)
     if (!options.overwrite) {
       const existingFiles: string[] = [];
       for (const fileName of component.files) {
@@ -96,7 +146,6 @@ export async function add<T extends string>(
 
     const writtenFiles: string[] = [];
 
-    // Write root-level files
     for (const fileName of component.files) {
       const code = await getComponentCode(component.path, fileName);
       const filePath = path.join(componentDir, fileName);
@@ -104,7 +153,6 @@ export async function add<T extends string>(
       writtenFiles.push(filePath);
     }
 
-    // Write files from folders
     if (component.folders && component.folders.length > 0) {
       for (const folder of component.folders) {
         const folderPath = path.join(componentDir, folder.name);
@@ -117,7 +165,6 @@ export async function add<T extends string>(
           );
           const filePath = path.join(componentDir, folder.name, fileName);
 
-          // Ensure nested directories exist (for files like "header/HeaderNavBar.tsx")
           await fs.ensureDir(path.dirname(filePath));
 
           await fs.writeFile(filePath, code, "utf-8");
