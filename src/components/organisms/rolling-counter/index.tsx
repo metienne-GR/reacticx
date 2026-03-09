@@ -15,6 +15,7 @@ import { BlurView, type BlurViewProps } from "expo-blur";
 import type { ICounter, IReusableDigit } from "./types";
 import { SPRING_CONFIG } from "./const";
 import { scheduleOnRN } from "react-native-worklets";
+import { LinearGradient } from "expo-linear-gradient";
 
 const AnimatedBlur =
   Animated.createAnimatedComponent<Partial<BlurViewProps>>(BlurView);
@@ -42,6 +43,7 @@ const CounterDigit: FC<IReusableDigit> = memo<IReusableDigit>(
     color,
     fontSize,
     springConfig,
+    digitStyle,
   }: IReusableDigit):
     | (React.JSX.Element & React.ReactNode & React.ReactElement)
     | null => {
@@ -79,6 +81,26 @@ const CounterDigit: FC<IReusableDigit> = memo<IReusableDigit>(
       },
     );
 
+    const animatedAndroidBlurStylez = useAnimatedStyle<
+      Required<Partial<Pick<ViewStyle, "filter">>>
+    >(() => {
+      const targetY = -height * currentDigit.value;
+      const delta = Math.abs(slideY.value - targetY);
+      const isMoving = delta > 0.5;
+      return {
+        filter: [
+          {
+            blur: isMoving
+              ? withSpring<number>(
+                  interpolate(delta, [0, height], [0, 1.95]),
+                  {},
+                )
+              : 0,
+          },
+        ],
+      };
+    });
+
     return (
       <View
         style={{
@@ -89,22 +111,27 @@ const CounterDigit: FC<IReusableDigit> = memo<IReusableDigit>(
       >
         <Animated.View style={digitSlideStylez}>
           {Array.from({ length: 10 }, (_, i) => (
-            <Text
+            <Animated.Text
               key={i}
-              style={{
-                height,
-                width,
-                textAlign: "center",
-                lineHeight: height,
-                fontSize,
-                fontWeight: "bold",
-                color,
-                fontVariant: ["tabular-nums"],
-              }}
+              style={[
+                {
+                  height,
+                  width,
+                  textAlign: "center",
+                  lineHeight: height,
+                  fontSize,
+                  fontWeight: "bold",
+                  color,
+                  fontVariant: ["tabular-nums"],
+                },
+                Platform.OS === "android" && animatedAndroidBlurStylez,
+                digitStyle,
+              ]}
             >
               {i}
-            </Text>
+            </Animated.Text>
           ))}
+
           {Platform.OS === "ios" && (
             <AnimatedBlur
               animatedProps={blurEffectPropz}
@@ -127,6 +154,7 @@ const RollingCounter: FC<ICounter> = memo(
     fontSize = 48,
     color = "#000",
     springConfig = SPRING_CONFIG,
+    digitStyle,
   }: ICounter):
     | (React.JSX.Element & React.ReactNode & React.ReactElement)
     | null => {
@@ -177,6 +205,7 @@ const RollingCounter: FC<ICounter> = memo(
               place={placeIndex}
               counterValue={animatedValue}
               height={height}
+              digitStyle={digitStyle}
               width={width}
               color={color}
               fontSize={fontSize}

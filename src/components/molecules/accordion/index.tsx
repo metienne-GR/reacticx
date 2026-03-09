@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { BlurView, type BlurViewProps } from "@sbaiahmed1/react-native-blur";
+import { BlurView, type BlurViewProps } from "expo-blur";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Platform, Pressable, StyleSheet, View } from "react-native";
 import Animated, {
@@ -319,7 +319,15 @@ const AccordionContent = ({ children }: AccordionContentProps) => {
   }, [isOpen]);
 
   const animatedBlurProps = useAnimatedProps(() => ({
-    blurAmount: blurIntensity.value,
+    intensity: blurIntensity.value,
+  }));
+
+  const animatedAndroidBlurStylez = useAnimatedStyle(() => ({
+    filter: [
+      {
+        blur: interpolate(blurIntensity.value, [0, 40], [0, 20]),
+      },
+    ],
   }));
 
   return (
@@ -331,25 +339,34 @@ const AccordionContent = ({ children }: AccordionContentProps) => {
       )}
       <Animated.View style={animatedStyle}>
         <View style={styles.contentWrapper}>
-          <View style={styles.content}>{children}</View>
-          <AnimatedBlurView
-            blurType={
-              theme.backgroundColor === "#18181b" ||
-              theme.backgroundColor === "#0c4a6e" ||
-              theme.backgroundColor === "#7c2d12"
-                ? "dark"
-                : "systemUltraThinMaterialDark"
-            }
-            animatedProps={animatedBlurProps}
+          <Animated.View
             style={[
-              {
-                overflow: "hidden",
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-              },
+              styles.content,
+              Platform.OS === "android" && animatedAndroidBlurStylez,
             ]}
-          />
+          >
+            {children}
+          </Animated.View>
+          {Platform.OS === "ios" && (
+            <AnimatedBlurView
+              tint={
+                theme.backgroundColor === "#18181b" ||
+                theme.backgroundColor === "#0c4a6e" ||
+                theme.backgroundColor === "#7c2d12"
+                  ? "dark"
+                  : "systemUltraThinMaterialDark"
+              }
+              animatedProps={animatedBlurProps}
+              style={[
+                {
+                  overflow: "hidden",
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                },
+              ]}
+            />
+          )}
         </View>
       </Animated.View>
     </>

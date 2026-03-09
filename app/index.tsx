@@ -1,153 +1,97 @@
-import React from "react";
-import { StyleSheet, Text, View, Alert, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { Dock, type IDockItem } from "@/components/organisms/mobile-dock";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
+import { useState } from "react";
+import Ruler from "@/components/base/ruler";
 
-function LogoIcon({ url }: { url: string }) {
-  return (
-    <View style={styles.iconContainer}>
-      <Image source={{ uri: url }} style={styles.iconImage} />
-    </View>
-  );
-}
-
-const LOGOS = [
-  {
-    appName: "X",
-    url: "https://cdn.brandfetch.io/idS5WhqBbM/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1768324401335",
-  },
-  {
-    appName: "Github",
-    url: "https://img.icons8.com/?size=1000&id=efFfwotdkiU5&format=png&color=000000",
-  },
-  {
-    appName: "Reddit",
-    url: "https://cdn.brandfetch.io/idkKwm0IT0/w/1000/h/1000/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1768324678544",
-  },
-  {
-    appName: "Discord",
-    url: "https://static.vecteezy.com/system/resources/previews/006/892/625/non_2x/discord-logo-icon-editorial-free-vector.jpg",
-  },
-  {
-    appName: "Pinterest",
-    url: "https://www.citypng.com/public/uploads/preview/apple-pinterest-app-icon-logo-flat-701751695135779qsb0o42acw.png?v=2025091511",
-  },
-  {
-    appName: "Airbnb",
-    url: "https://framerusercontent.com/images/7bkn2MV652JLUJYl05zd0gF13g.png?width=460&height=460",
-  },
-  {
-    appName: "Apple Music",
-    url: "https://cdn.brandfetch.io/id_yBTuraI/w/800/h/800/theme/light/symbol.png?c=1bxid64Mup7aczewSAYMX&t=1715866792263",
-  },
-];
-
-const items: IDockItem[] = LOGOS.map((logo) => ({
-  icon: <LogoIcon url={logo.url} />,
-  label: logo.appName,
-  onPress: () => Alert.alert(`${logo.appName} pressed`),
-}));
-
-export default function DockDemoScreen() {
+export default function App() {
   const [fontLoaded] = useFonts({
     SfProRounded: require("@/assets/fonts/sf-pro-rounded.ttf"),
     HelveticaNowDisplay: require("@/assets/fonts/HelveticaNowDisplayMedium.ttf"),
   });
+
+  const [value, setValue] = useState(18);
+
   return (
-    <GestureHandlerRootView style={styles.root}>
-      <SafeAreaView style={styles.safe}>
+    <GestureHandlerRootView style={styles.container}>
+      <StatusBar style="light" />
+      <View style={{ marginTop: 100 }}>
         <View style={styles.content}>
           <Text
-            style={[
-              styles.title,
-              {
-                fontFamily: fontLoaded ? "HelveticaNowDisplay" : undefined,
-              },
-            ]}
+            style={[styles.label, fontLoaded && { fontFamily: "SfProRounded" }]}
           >
-            Love Reacticx?
+            Weight
           </Text>
-          <Text
-            style={[
-              styles.subtitle,
-              {
-                fontFamily: fontLoaded ? "SfProRounded" : undefined,
-              },
-            ]}
-          >
-            Explore the magic of Reacticx with this interactive mobile dock
-            demo.
-          </Text>
+          <View style={styles.valueRow}>
+            <Text
+              style={[
+                styles.value,
+                fontLoaded && { fontFamily: "HelveticaNowDisplay" },
+              ]}
+            >
+              {value}
+            </Text>
+            <Text
+              style={[
+                styles.unit,
+                fontLoaded && { fontFamily: "SfProRounded" },
+              ]}
+            >
+              kg
+            </Text>
+          </View>
         </View>
 
-        <View style={styles.dockArea}>
-          <Dock
-            items={items}
-            mass={0.9}
-            damping={25}
-            stiffness={250}
-            size={40}
-            spread={1.3}
-            height={60}
-            dockColor={"#1a1a1a"}
-            paddingBottom={8}
-          />
-        </View>
-      </SafeAreaView>
+        <Ruler
+          height={120}
+          width={380}
+          minValue={5}
+          maxValue={50}
+          step={18}
+          tickColor="rgba(255,255,255,0.3)"
+          activeTickColor="#fff"
+          cursorColor="#fff"
+          showCursor
+          enableHaptics
+          tickHeights={{ small: 20, medium: 28, large: 40 }}
+          onValueChange={setValue}
+        />
+      </View>
     </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     flex: 1,
-    backgroundColor: "#121212",
-  },
+    backgroundColor: "#0a0a0a",
+    alignItems: "center",
 
-  safe: {
-    flex: 1,
+    gap: 40,
   },
-
   content: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 32,
+    gap: 9,
   },
-
-  title: {
-    fontSize: 28,
-    fontWeight: "700",
-    color: "#ffffff",
-    marginBottom: 8,
-  },
-
-  subtitle: {
+  label: {
     fontSize: 15,
-    color: "#86868b",
-    textAlign: "center",
-    lineHeight: 22,
+    color: "rgba(255,255,255,0.5)",
+    letterSpacing: 1,
+    textTransform: "uppercase",
   },
-
-  dockArea: {
-    paddingBottom: 24,
-    alignItems: "center",
+  valueRow: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    gap: 6,
   },
-
-  iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
+  value: {
+    fontSize: 72,
+    color: "#fff",
+    fontWeight: "600",
   },
-
-  iconImage: {
-    width: "100%",
-    height: "100%",
+  unit: {
+    fontSize: 24,
+    color: "rgba(255,255,255,0.5)",
   },
 });

@@ -17,7 +17,7 @@ import Animated, {
   useAnimatedProps,
 } from "react-native-reanimated";
 import { SymbolView } from "expo-symbols";
-import { BlurView, BlurViewProps } from "expo-blur";
+import { BlurView, type BlurViewProps } from "expo-blur";
 import type { SearchBarProps } from "./SearchBar.types";
 import { scheduleOnRN } from "react-native-worklets";
 import { Ionicons } from "@expo/vector-icons";
@@ -223,11 +223,25 @@ export const SearchBar = ({
     setContainerDimensions({ width });
   };
 
+  const animatedAndroidBlurStylez = useAnimatedStyle(() => ({
+    filter: [
+      {
+        blur: withSpring(
+          interpolate(focusProgress.value, [0, 0.3, 0.5, 1], [0, 10, 20, 0]),
+        ),
+      },
+    ],
+  }));
+
   return (
     <View style={[styles.container, style]} onLayout={handleLayout}>
       <View style={styles.searchRow}>
         <AnimatedView
-          style={[styles.searchBarContainer, animatedContainerStyle]}
+          style={[
+            styles.searchBarContainer,
+            animatedContainerStyle,
+            Platform.OS === "android" && animatedAndroidBlurStylez,
+          ]}
         >
           <BlurView
             intensity={15}
@@ -281,6 +295,7 @@ export const SearchBar = ({
                     {...props}
                   />
                 </AnimatedView>
+
                 {Platform.OS === "ios" && (
                   <AnimatedBlurView
                     style={[
@@ -366,7 +381,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 12,
-    paddingVertical: 10,
+    paddingVertical: Platform.OS === "ios" ? 10 : 5,
   },
   searchIconContainer: {
     width: 20,

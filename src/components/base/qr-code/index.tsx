@@ -1,4 +1,10 @@
-import { Pressable, StyleSheet, Text, type ViewStyle } from "react-native";
+import {
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  type ViewStyle,
+} from "react-native";
 import React, { memo } from "react";
 import Animated, {
   interpolate,
@@ -160,18 +166,21 @@ const QRCode: React.FC<QRCodeProps> & React.FunctionComponent<QRCodeProps> =
                 <Feather name="x" size={20} color="black" />
               </Pressable>
             </Animated.View>
-            <AnimatedBlurView
-              pointerEvents={"none"}
-              tint="systemUltraThinMaterialLight"
-              animatedProps={animatedBlurViewPropsBottom}
-              style={[
-                StyleSheet.absoluteFillObject,
-                {
-                  overflow: "hidden",
-                  borderRadius: 30,
-                },
-              ]}
-            />
+
+            {Platform.OS === "ios" && (
+              <AnimatedBlurView
+                pointerEvents={"none"}
+                tint="systemUltraThinMaterialLight"
+                animatedProps={animatedBlurViewPropsBottom}
+                style={[
+                  StyleSheet.absoluteFillObject,
+                  {
+                    overflow: "hidden",
+                    borderRadius: 30,
+                  },
+                ]}
+              />
+            )}
           </Animated.View>
         </Pressable>
       );

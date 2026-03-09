@@ -5,7 +5,7 @@ import { useFonts } from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { useCallback, useState } from "react";
 import { Button } from "@/components/base/button";
-import { CircularLoader } from "../docs/react-native/circular-loader";
+import { CircularLoader } from "@/components/molecules/circular-loader";
 
 export default function App() {
   const [fontLoaded] = useFonts({

@@ -6,7 +6,9 @@ interface IReusableDigit {
   counterValue: SharedValue<number>;
   height: number;
   width: number;
-  digitStyle: StyleProp<TextStyle>;
+  digitStyle?: StyleProp<TextStyle>;
+  color?: string;
+  fontSize?: number;
   springConfig: Partial<WithSpringConfig>;
 }
 
@@ -16,6 +18,8 @@ interface ICounter {
   width?: number;
   digitStyle?: StyleProp<TextStyle>;
   springConfig?: Partial<WithSpringConfig>;
+  fontSize?: number;
+  color?: string;
 }
 
 export type { ICounter, IReusableDigit };

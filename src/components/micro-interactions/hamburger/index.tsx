@@ -12,7 +12,7 @@ import Animated, {
   useAnimatedStyle,
 } from "react-native-reanimated";
 import type { HamburgerIconProps } from "./types";
-import { BlurView, BlurViewProps } from "expo-blur";
+import { BlurView, type BlurViewProps } from "expo-blur";
 
 const AnimatedBlurView =
   Animated.createAnimatedComponent<BlurViewProps>(BlurView);
@@ -57,10 +57,28 @@ export const HamburgerIcon: React.FC<HamburgerIconProps> =
           },
           { rotate: `${interpolate(progress.value, [0, 1], [0, 45])}deg` },
         ],
+        filter: [
+          {
+            blur: interpolate(
+              progress.value,
+              [0, 0.3, 0.6, 1],
+              [0, 2.5, 9.5, 0],
+            ),
+          },
+        ],
       }));
 
       const middleStyle = useAnimatedStyle<ViewStyle>(() => ({
         opacity: interpolate(progress.value, [0, 0.9, 1], [1, 0, 0]),
+        filter: [
+          {
+            blur: interpolate(
+              progress.value,
+              [0, 0.3, 0.6, 1],
+              [0, 2.5, 9.5, 0],
+            ),
+          },
+        ],
       }));
 
       const bottomStyle = useAnimatedStyle<ViewStyle>(() => ({
@@ -73,6 +91,15 @@ export const HamburgerIcon: React.FC<HamburgerIconProps> =
             ),
           },
           { rotate: `${interpolate(progress.value, [0, 1], [0, -45])}deg` },
+        ],
+        filter: [
+          {
+            blur: interpolate(
+              progress.value,
+              [0, 0.3, 0.6, 1],
+              [0, 2.5, 9.5, 0],
+            ),
+          },
         ],
       }));
 
