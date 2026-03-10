@@ -119,6 +119,7 @@
     "components/spinner-arc",
     "components/split-view",
     "components/squiggly-slider",
+    "components/squircle-view",
     "components/stack-aware-tabs",
     "components/stack-cards",
     "components/stepper",

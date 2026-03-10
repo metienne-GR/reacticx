@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "totalComponents": 125,
+  "totalComponents": 127,
   "categories": [
     "ai",
     "atoms",
@@ -558,6 +558,13 @@
         "useFrameTime.ts"
       ]
     },
+    "mobile-dock": {
+      "name": "mobile-dock",
+      "category": "organisms",
+      "path": "src/components/organisms/mobile-dock",
+      "folders": [],
+      "files": ["const.ts", "index.tsx", "types.ts", "utils.ts"]
+    },
     "morphing-tabbar": {
       "name": "morphing-tabbar",
       "category": "molecules",
@@ -839,6 +846,13 @@
       "path": "src/components/molecules/squiggly-slider",
       "folders": [],
       "files": ["const.ts", "index.tsx", "types.ts"]
+    },
+    "squircle-view": {
+      "name": "squircle-view",
+      "category": "base",
+      "path": "src/components/base/squircle-view",
+      "folders": [],
+      "files": ["const.ts", "helper.ts", "index.tsx", "types.ts"]
     },
     "stack-aware-tabs": {
       "name": "stack-aware-tabs",
