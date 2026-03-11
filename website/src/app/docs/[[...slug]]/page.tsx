@@ -22,6 +22,7 @@ import * as TabsComponents from "fumadocs-ui/components/tabs";
 import { ComponentSource } from "@/components/docs/component-source";
 import { ExampleComponentSource } from "@/components/docs/example-component-source";
 import { AutoTypeTable } from "@/components/docs/auto-type";
+import { BundleSizeBadge } from "@/components/bundle-size-badge";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   const params = await props.params;
@@ -30,6 +31,12 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
   if (!page) notFound();
 
   const MDX = page.data.body;
+
+  // Extract component name if we're in the components section
+  const componentName =
+    params.slug?.[0] === "components" && params.slug?.[1]
+      ? params.slug[1]
+      : null;
 
   return (
     <DocsPage
@@ -54,9 +61,9 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
         </div>
       )}
 
-      <div className="ml-2 md:ml-4 lg:ml-8 flex flex-wrap items-center gap-2 md:gap-3 mt-2">
+      <div className="ml-2 md:ml-4 lg:ml-8 flex flex-wrap items-center gap-2 md:gap-3 mt-2 border-b pt-2 pb-5">
         <EditOnGitHub
-          className="flex-shrink-0 border border-fd-border rounded-md px-2 py-1 text-xs md:text-sm text-black dark:text-white [&_svg]:text-black dark:[&_svg]:text-white hover:bg-fd-secondary/80 transition-colors"
+          className="inline-flex flex-shrink-0 items-center gap-1.5 h-7 px-2 md:px-2.5 rounded-md text-xs font-medium bg-fd-secondary text-black dark:text-white border border-fd-border hover:bg-fd-secondary/80 transition-colors [&_svg]:size-3"
           href={`https://github.com/rit3zh/reacticx/tree/main/website/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
         />
         <CopyMarkdownButton
@@ -66,6 +73,7 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
           markdownUrl={`${page.url}.mdx`}
           githubUrl={`https://github.com/rit3zh/reacticx/tree/main/website/content/docs/${params.slug ? `${params.slug.join("/")}.mdx` : "index.mdx"}`}
         />
+        {componentName && <BundleSizeBadge slug={componentName} />}
       </div>
       <DocsBody className="ml-2 md:ml-4 lg:ml-8">
         <MDX

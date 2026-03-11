@@ -88,12 +88,12 @@ const AboutIcon = ({ className }: { className?: string }) => (
 export const navLinks = [
   {
     label: "Components",
-    href: "/docs",
+    href: "/docs/components/apple-intelligence/",
     icon: ComponentsIcon,
   },
   {
     label: "About",
-    href: "/docs/about",
+    href: "/docs/guides/",
     icon: AboutIcon,
   },
 ];

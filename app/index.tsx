@@ -20,8 +20,8 @@ const ICONS = [
   { name: "moon.fill", color: "#5856D6" },
 ];
 
-export default function IconExample() {
-  const progress = useSharedValue(0);
+export default function IconExample(): React.JSX.Element {
+  const progress = useSharedValue<number>(0);
 
   const animatedViewStyle = useAnimatedStyle(() => {
     return {

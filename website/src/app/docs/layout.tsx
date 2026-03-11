@@ -16,19 +16,33 @@ export default function Layout({ children }: LayoutProps<"/docs">) {
     <DocsLayout
       tree={source.pageTree}
       sidebar={{
-        banner: (
-          <div className="hidden md:flex flex-col gap-2 rounded-md p-2 py-1">
-            <Link
-              href="https://www.buymeacoffee.com/rit3zh"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span className="flex items-center gap-2">
-                <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a book&emoji=📖&slug=rit3zh&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
-              </span>
-            </Link>
-          </div>
-        ),
+        tabs: {
+          transform(option, node) {
+            const meta = source.getNodeMeta(node);
+            if (!meta || !node.icon) return option;
+
+            const color = `var(--${
+              meta.path.split("/")[0]
+            }-color, var(--color-fd-foreground))`;
+
+            return {
+              ...option,
+              icon: (
+                <div
+                  className="[&_svg]:size-4 flex items-center justify-center ml-1 mt-0.5"
+                  style={
+                    {
+                      color,
+                      "--tab-color": color,
+                    } as object
+                  }
+                >
+                  {node.icon}
+                </div>
+              ),
+            };
+          },
+        },
       }}
       {...baseOptions()}
     >

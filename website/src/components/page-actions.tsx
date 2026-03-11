@@ -220,17 +220,10 @@ export function ViewOptions({
   return (
     <Popover>
       <PopoverTrigger
-        className={cn(
-          buttonVariants({
-            color: "secondary",
-            size: "sm",
-            className:
-              "gap-1.5 md:gap-2 flex-shrink-0 text-xs md:text-sm px-2 md:px-3",
-          }),
-        )}
+        className="inline-flex shrink-0 items-center gap-1.5 h-7 px-2 md:px-2.5 rounded-md text-xs font-medium bg-fd-secondary text-black dark:text-white border border-fd-border hover:bg-fd-secondary/80 transition-colors [&_svg]:size-3"
       >
         <span className="hidden sm:inline">Open</span>
-        <ChevronDown className="size-3 md:size-3.5 text-fd-muted-foreground" />
+        <ChevronDown className="text-fd-muted-foreground" />
       </PopoverTrigger>
       <PopoverContent className="flex flex-col">
         {items.map((item) => (
